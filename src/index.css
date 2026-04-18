@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  /* OTA / Premium Palette */
+  --color-primary-blue: #0A2540; /* Stripe-like deep blue */
+  --color-bg-subtle: #F6F9FC;
+  --color-surface: #FFFFFF;
+  --color-cta-primary: #635BFF; /* Premium purple-blue */
+  --color-cta-hover: #0A2540;
+  --color-accent-gold: #F6A100;
+  --color-text-dark: #32325D;
+  --color-text-muted: #8898AA;
+
+  --font-sans: 'Figtree', 'Inter', sans-serif;
+  --font-display: 'Figtree', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --shadow-premium: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0 13px 27px -5px rgba(50,50,93,0.25), 0 8px 16px -8px rgba(0,0,0,0.3);
+}
+
+@layer base {
+  :root {
+    --brand-dark: #0A2540;
+    --brand-primary: #635BFF;
+  }
+
+  body {
+    @apply antialiased text-[#0A2540] bg-[#F8FAFC] overflow-x-hidden w-full;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Figtree', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Custom Branded Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0A2540;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #E2E8F0;
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #635BFF;
+  }
+
+  /* Selection Style */
+  ::selection {
+    background: rgba(99, 91, 255, 0.15);
+    color: #635BFF;
+  }
+
+  /* No Scrollbar Utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  a, button, input {
+    cursor: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight font-bold text-text-dark;
+  }
+}
+
+.premium-card {
+  @apply bg-surface rounded-xl border border-gray-100 shadow-float transition-all duration-300;
+}
+
+.premium-card:hover {
+  @apply shadow-premium -translate-y-1;
+}
+
+.leaflet-container {
+  z-index: 0;
+  cursor: grab !important;
+}
+
+/* Ensure Leaflet tile pane renders at z-index > 0 inside the container */
+.leaflet-tile-pane {
+  z-index: 2 !important;
+}
+
+.leaflet-marker-pane,
+.leaflet-popup-pane {
+  z-index: 3 !important;
+}
+
+/* Base styling for our skyline shapes */
+.building-glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,246,252,0.9) 100%);
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 32px 0 rgba(10, 37, 64, 0.15);
+  backdrop-filter: blur(4px);
+}
