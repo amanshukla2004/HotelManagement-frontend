@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trash2, Plus, Bed, DollarSign, Users, Maximize2, Sparkles, Image as ImageIcon, RefreshCw, AlertCircle } from 'lucide-react';
-import SlideOver from '../ui/SlideOver';
+import Modal from '../ui/Modal';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ROOM_TYPES = ['STANDARD', 'DELUXE', 'SUITE', 'PREMIUM', 'VILLA', 'PENTHOUSE'];
-const ROOM_AMENITY_OPTIONS = ['AC', 'MINIBAR', 'TV', 'WIFI', 'SAFE', 'BATHTUB', 'BALCONY', 'KITCHEN', 'JACUZZI', 'SEA_VIEW'];
+const ROOM_AMENITY_OPTIONS = ['AC', 'MINIBAR', 'TV', 'WIFI', 'SAFE', 'BATHTUB', 'BALCONY', 'KITCHEN', 'JACUZZI', 'SEA_VIEW', 'COFFEE_MAKER', 'HAIR_DRYER', 'IRON', 'WORK_DESK', 'ROOM_SERVICE', 'SOUNDPROOFING'];
 
 const RoomFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) => {
   const isEditing = !!initialData;
@@ -73,14 +73,14 @@ const RoomFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =>
   const labelClass = 'block text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-1';
 
   return (
-    <SlideOver
+    <Modal
       isOpen={isOpen}
       onClose={onClose}
       title={isEditing ? 'Edit Room Type' : 'Add New Room Type'}
       subtitle="Configure pricing and availability for your property rooms."
-      width="max-w-lg"
+      width="max-w-3xl"
     >
-      <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-10 pb-24">
+      <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-10">
 
         {/* ─── SECTION: SUITE SPECIFICATIONS ────────────────────────── */}
         <section className="space-y-6">
@@ -194,23 +194,32 @@ const RoomFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =>
            
            <div className="space-y-4">
               <AnimatePresence>
-                {photos.map((_, idx) => (
+                {photos.map((url, idx) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="flex gap-3"
+                    className="flex flex-col sm:flex-row gap-4"
                   >
-                    <input
-                      {...register(`photos.${idx}`)}
-                      className={inputClass}
-                      placeholder="https://cdn.lux.io/room-v1.jpg"
-                    />
-                    {photos.length > 1 && (
-                      <button type="button" onClick={() => removePhoto(idx)} className="p-3.5 bg-red-50 text-red-400 hover:bg-red-500 hover:text-white rounded-2xl transition-all">
-                        <Trash2 size={16} />
-                      </button>
-                    )}
+                    <div className="w-full sm:w-28 h-20 bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden shrink-0 relative">
+                       {url ? (
+                         <img src={url} alt="Preview" className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/150?text=Error'; }} />
+                       ) : (
+                         <div className="w-full h-full flex items-center justify-center text-gray-300"><ImageIcon size={20} /></div>
+                       )}
+                    </div>
+                    <div className="flex-1 flex gap-3">
+                      <input
+                        {...register(`photos.${idx}`)}
+                        className={`${inputClass} self-start`}
+                        placeholder="https://cdn.lux.io/room-v1.jpg"
+                      />
+                      {photos.length > 1 && (
+                        <button type="button" onClick={() => removePhoto(idx)} className="p-3.5 bg-red-50 text-red-400 hover:bg-red-500 hover:text-white rounded-2xl transition-all self-start h-[46px]">
+                          <Trash2 size={16} />
+                        </button>
+                      )}
+                    </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -225,7 +234,7 @@ const RoomFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =>
         </section>
 
         {/* ─── SUBMIT ────────────────────────────────────────────────────── */}
-        <div className="fixed bottom-0 left-0 right-0 p-8 bg-white/80 backdrop-blur-xl border-t border-gray-100 flex gap-4 z-50">
+        <div className="sticky bottom-0 -mx-8 -mb-6 px-8 py-6 bg-white/90 backdrop-blur-xl border-t border-gray-100 flex gap-4 z-50 mt-10">
            <button
              type="button"
              onClick={onClose}
@@ -243,7 +252,7 @@ const RoomFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =>
            </button>
         </div>
       </form>
-    </SlideOver>
+    </Modal>
   );
 };
 

@@ -129,7 +129,7 @@ const ManageHotelsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] relative">
+    <div className="min-h-screen bg-[#F8FAFC] relative pt-28">
       {/* ─── MODALS (Top Level) ────────────────────────────────────────── */}
       <HotelFormModal
         isOpen={slideOpen}

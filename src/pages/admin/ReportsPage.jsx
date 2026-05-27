@@ -127,7 +127,7 @@ const ReportsPage = () => {
   const selectedHotel = hotels.find((h) => String(h.id) === String(selectedHotelId));
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] pt-28">
       <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
         
         {/* ─── Header ────────────────────────────────────────────────────────── */}

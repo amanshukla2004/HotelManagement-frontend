@@ -36,11 +36,9 @@ const Header = () => {
 
         <div className="hidden md:flex items-center space-x-8 ml-auto mr-8">
           <nav className="flex items-center space-x-6">
-            {role !== 'HOTEL_MANAGER' && (
-              <NavLink to="/bookings" className={({isActive}) => `text-[15px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#0284C7] ${isActive ? 'text-[#0284C7]' : 'text-white/60'}`}>
-                My Bookings
-              </NavLink>
-            )}
+            <NavLink to="/bookings" className={({isActive}) => `text-[15px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#0284C7] ${isActive ? 'text-[#0284C7]' : 'text-white/60'}`}>
+              My Bookings
+            </NavLink>
             <NavLink to="/support" className={({isActive}) => `text-[15px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#0284C7] ${isActive ? 'text-[#0284C7]' : 'text-white/60'}`}>
               Support
             </NavLink>
@@ -94,8 +92,6 @@ const Header = () => {
                       >
                         <UserCircle2 size={16} /> My Profile
                       </NavLink>
-                      {role !== 'HOTEL_MANAGER' && (
-                        <>
                           <NavLink 
                             to="/bookings" 
                             onClick={() => setIsMenuOpen(false)}
@@ -110,8 +106,6 @@ const Header = () => {
                           >
                             <User size={16} /> Saved Guests
                           </NavLink>
-                        </>
-                      )}
                     </div>
 
                     <div className="mt-2 pt-2 border-t border-gray-50">

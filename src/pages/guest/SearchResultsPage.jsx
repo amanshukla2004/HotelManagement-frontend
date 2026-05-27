@@ -31,8 +31,12 @@ const ImageCarousel = ({ photos, hotelName }) => {
       <AnimatePresence mode="wait">
         <motion.img
           key={index}
-          src={photos[index]}
+          src={photos[index] || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800'}
           alt={hotelName}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800';
+          }}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
@@ -102,7 +106,7 @@ const HotelCard = ({ hotelPrice, onSelect }) => {
           <div className="flex gap-2 flex-wrap mb-4">
             {(hotel.amenities || []).map(a => (
               <span key={a} className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest bg-[#0284C7]/5 text-[#0284C7] px-3 py-1.5 rounded-full border border-[#0284C7]/10">
-                {AMENITY_ICONS[a] || null}{a}
+                {AMENITY_ICONS[a] || null}{a.replace(/_/g, ' ')}
               </span>
             ))}
           </div>
@@ -210,7 +214,7 @@ const SearchResultsPage = () => {
   };
 
   return (
-    <div className="bg-[#F0F9FF] min-h-screen">
+    <div className="bg-[#F0F9FF] min-h-screen pt-28">
       
       {/* Search Header Strip */}
       <div className="bg-white/80 backdrop-blur-lg border-b border-gray-200 py-8 sticky top-0 z-40 shadow-sm">
@@ -270,7 +274,7 @@ const SearchResultsPage = () => {
           <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
             <h4 className="text-[11px] font-bold text-[#0F172A] uppercase tracking-wider mb-6">Amenities</h4>
             <div className="space-y-3">
-              {['WIFI', 'POOL', 'GYM', 'PARKING'].map(a => (
+              {['WIFI', 'POOL', 'SPA', 'GYM', 'PARKING', 'RESTAURANT', 'BAR', 'ROOM_SERVICE', 'AC', 'LAUNDRY', 'PET_FRIENDLY', 'BUSINESS_CENTER', 'CONFERENCE_ROOM', 'EV_CHARGING'].map(a => (
                 <button
                   key={a}
                   onClick={() => toggleAmenity(a)}
@@ -281,7 +285,7 @@ const SearchResultsPage = () => {
                   }`}
                 >
                   <span className="text-[11px] font-bold uppercase tracking-wider flex items-center gap-2">
-                    {AMENITY_ICONS[a]} {a}
+                    {AMENITY_ICONS[a] || null} {a.replace(/_/g, ' ')}
                   </span>
                   {selectedAmenities.includes(a) && <X size={14} />}
                 </button>

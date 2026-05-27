@@ -114,7 +114,7 @@ const ManageInventoryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] pt-28">
       <div className="max-w-7xl mx-auto px-6 py-16 space-y-12">
 
         {/* ─── Header Section ─────────────────────────────────────────── */}

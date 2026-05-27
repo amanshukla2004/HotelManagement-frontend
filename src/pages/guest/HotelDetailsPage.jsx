@@ -6,7 +6,7 @@ import {
   MapPin, Phone, Mail, Loader2, ServerCrash, 
   ChevronLeft, Users, Bed, Star, ArrowRight,
   Wifi, Waves, SlidersHorizontal, UserCheck, ShieldCheck,
-  Maximize2
+  Maximize2, Image as ImageIcon
 } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
@@ -338,6 +338,31 @@ const HotelDetailsPage = () => {
 
           </aside>
         </div>
+
+        {/* ── GALLERY SECTION ────────────────────────────────────────────────── */}
+        <div className="mt-16 space-y-8">
+           <div className="flex items-center justify-between px-4">
+              <h2 className="text-2xl font-black text-[#0F172A] tracking-tighter uppercase">Photo Gallery</h2>
+           </div>
+           
+           <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+              {photos?.map((photo, i) => (
+                 <div key={i} className="break-inside-avoid rounded-[2.5rem] overflow-hidden bg-gray-50 border border-gray-100 shadow-sm group relative">
+                    <img src={photo} alt={`${hotel?.name} ${i}`} className="w-full h-auto object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                       <ImageIcon className="text-white" size={32} strokeWidth={1} />
+                    </div>
+                 </div>
+              ))}
+              {(!photos || photos.length === 0) && (
+                 <div className="col-span-full py-32 flex flex-col items-center justify-center text-gray-300">
+                    <ImageIcon size={64} strokeWidth={1} className="mb-4" />
+                    <p className="text-xs font-black uppercase tracking-widest">No Photos Found</p>
+                 </div>
+              )}
+           </div>
+        </div>
+
       </div>
 
       {/* Booking Dialog */}

@@ -101,7 +101,7 @@ const ManageRoomsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] pt-28">
       <div className="max-w-screen-2xl mx-auto px-6 py-16 space-y-12">
 
         {/* ─── Breadcrumbs & Header ─────────────────────────────────────────── */}

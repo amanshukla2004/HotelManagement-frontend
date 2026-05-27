@@ -67,7 +67,7 @@ const HotelSummaryPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pb-20">
+    <div className="min-h-screen bg-[#F8FAFC] pb-20 pt-28">
       
       {/* ─── Premium Header Section ────────────────────────────────────────── */}
       <div className="bg-[#0F172A] text-white relative overflow-hidden">
