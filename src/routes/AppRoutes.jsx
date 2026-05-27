@@ -13,8 +13,12 @@ import SavedGuestsPage from '../pages/guest/SavedGuestsPage';
 import ProfilePage from '../pages/guest/ProfilePage';
 import SupportPage from '../pages/guest/SupportPage';
 import RefundPolicyPage from '../pages/guest/RefundPolicyPage';
+import PrivacyPage from '../pages/guest/PrivacyPage';
+import TermsPage from '../pages/guest/TermsPage';
+import CookiePolicyPage from '../pages/guest/CookiePolicyPage';
 import PaymentSuccessPage from '../pages/guest/PaymentSuccessPage';
 import PaymentCancelPage from '../pages/guest/PaymentCancelPage';
+import PaymentFailurePage from '../pages/guest/PaymentFailurePage';
 
 // Admin Pages
 import ManageHotelsPage from '../pages/admin/ManageHotelsPage';
@@ -43,8 +47,12 @@ const AnimatedRoutes = () => {
           <Route path="profile" element={<ProfilePage />} />
           <Route path="support" element={<SupportPage />} />
           <Route path="refund-policy" element={<RefundPolicyPage />} />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="terms" element={<TermsPage />} />
+          <Route path="cookie-policy" element={<CookiePolicyPage />} />
           <Route path="payments/success" element={<PaymentSuccessPage />} />
           <Route path="payments/cancel" element={<PaymentCancelPage />} />
+          <Route path="payments/failure" element={<PaymentFailurePage />} />
           
           {/* Manager Routes */}
           <Route path="admin/hotels" element={<ManageHotelsPage />} />

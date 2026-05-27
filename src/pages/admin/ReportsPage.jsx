@@ -45,7 +45,7 @@ const KpiCard = ({ icon, label, value, sub, color, loading }) => (
     ) : (
       <div>
         <p className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-1">{label}</p>
-        <p className="text-4xl font-black text-[#0A2540] tracking-tighter mb-1">{value}</p>
+        <p className="text-4xl font-black text-[#0F172A] tracking-tighter mb-1">{value}</p>
         <p className="text-xs font-bold text-gray-400 tracking-tight">{sub}</p>
       </div>
     )}
@@ -134,16 +134,16 @@ const ReportsPage = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
            <div className="space-y-3">
               <div className="flex items-center gap-2">
-                 <span className="px-3 py-1 bg-[#635BFF]/10 text-[#635BFF] text-xs font-black uppercase tracking-widest rounded-md">Reports</span>
+                 <span className="px-3 py-1 bg-[#0284C7]/10 text-[#0284C7] text-xs font-black uppercase tracking-widest rounded-md">Reports</span>
                  <div className="h-1 w-1 bg-gray-200 rounded-full" />
                  <span className="text-xs font-black text-gray-400 uppercase tracking-widest">Summary</span>
               </div>
-              <h1 className="text-4xl font-black text-[#0A2540] tracking-tighter uppercase mb-2">Hotel Reports</h1>
+              <h1 className="text-4xl font-black text-[#0F172A] tracking-tighter uppercase mb-2">Hotel Reports</h1>
               <p className="text-sm font-medium text-gray-400 max-w-lg leading-relaxed">Performance summary for your hotel properties, revenue, and booking history.</p>
            </div>
            
            <div className="flex gap-4">
-              <button onClick={() => fetchData(selectedHotelId, today(), twoMonthsLater())} className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0A2540] transition-all shadow-sm">
+              <button onClick={() => fetchData(selectedHotelId, today(), twoMonthsLater())} className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0F172A] transition-all shadow-sm">
                  <RefreshCw size={18} className={reportLoading ? 'animate-spin' : ''} />
               </button>
            </div>
@@ -156,7 +156,7 @@ const ReportsPage = () => {
                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Selected Property</label>
                  <div className="relative">
                     <Building2 size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
-                    <select {...register('hotelId')} className="w-full bg-gray-50 border border-gray-100 rounded-2xl pl-11 pr-4 py-3.5 text-xs font-black text-[#0A2540] uppercase tracking-tighter outline-none focus:ring-4 focus:ring-[#635BFF]/5 focus:border-[#635BFF] appearance-none transition-all">
+                    <select {...register('hotelId')} className="w-full bg-gray-50 border border-gray-100 rounded-2xl pl-11 pr-4 py-3.5 text-xs font-black text-[#0F172A] uppercase tracking-tighter outline-none focus:ring-4 focus:ring-[#0284C7]/5 focus:border-[#0284C7] appearance-none transition-all">
                        <option value="">Select Property</option>
                        {hotels.map(h => <option key={h.id} value={h.id}>{h.name}</option>)}
                     </select>
@@ -166,17 +166,17 @@ const ReportsPage = () => {
                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Start Date</label>
                  <div className="relative">
                     <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
-                    <input type="date" {...register('startDate')} className="w-full bg-gray-50 border border-gray-100 rounded-2xl pl-11 pr-4 py-3.5 text-xs font-black text-[#0A2540] uppercase tracking-tighter outline-none focus:ring-4 focus:ring-[#635BFF]/5 focus:border-[#635BFF] transition-all" />
+                    <input type="date" {...register('startDate')} className="w-full bg-gray-50 border border-gray-100 rounded-2xl pl-11 pr-4 py-3.5 text-xs font-black text-[#0F172A] uppercase tracking-tighter outline-none focus:ring-4 focus:ring-[#0284C7]/5 focus:border-[#0284C7] transition-all" />
                  </div>
               </div>
               <div>
                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2 px-1">End Date</label>
                  <div className="relative">
                     <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300" />
-                    <input type="date" {...register('endDate')} className="w-full bg-gray-50 border border-gray-100 rounded-2xl pl-11 pr-4 py-3.5 text-xs font-black text-[#0A2540] uppercase tracking-tighter outline-none focus:ring-4 focus:ring-[#635BFF]/5 focus:border-[#635BFF] transition-all" />
+                    <input type="date" {...register('endDate')} className="w-full bg-gray-50 border border-gray-100 rounded-2xl pl-11 pr-4 py-3.5 text-xs font-black text-[#0F172A] uppercase tracking-tighter outline-none focus:ring-4 focus:ring-[#0284C7]/5 focus:border-[#0284C7] transition-all" />
                  </div>
               </div>
-              <button type="submit" className="w-full bg-[#0A2540] hover:bg-[#635BFF] text-white rounded-2xl py-4 font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-[#0A2540]/10 flex items-center justify-center gap-2 active:scale-95">
+              <button type="submit" className="w-full bg-[#0F172A] hover:bg-[#0284C7] text-white rounded-2xl py-4 font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-[#0F172A]/10 flex items-center justify-center gap-2 active:scale-95">
                  <Search size={16} /> <span>Apply Filters</span>
               </button>
            </form>
@@ -192,11 +192,11 @@ const ReportsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
            <KpiCard
              loading={reportLoading}
-             icon={<BookOpen size={24} className="text-[#635BFF]" />}
+             icon={<BookOpen size={24} className="text-[#0284C7]" />}
              label="Total Bookings"
              value={reportData?.bookingCount ?? '—'}
              sub="Completed bookings in this period"
-             color="bg-[#635BFF]/10 text-[#635BFF]"
+             color="bg-[#0284C7]/10 text-[#0284C7]"
            />
            <KpiCard
              loading={reportLoading}
@@ -208,11 +208,11 @@ const ReportsPage = () => {
            />
            <KpiCard
              loading={reportLoading}
-             icon={<TrendingUp size={24} className="text-[#F6A100]" />}
+             icon={<TrendingUp size={24} className="text-[#F97316]" />}
              label="Avg. Per Booking"
              value={reportData?.avgRevenue != null ? `₹${Number(reportData.avgRevenue).toFixed(0).toLocaleString()}` : '—'}
              sub="Average revenue generated per stay"
-             color="bg-[#F6A100]/10 text-[#F6A100]"
+             color="bg-[#F97316]/10 text-[#F97316]"
            />
         </div>
 
@@ -220,8 +220,8 @@ const ReportsPage = () => {
         <div className="space-y-6">
            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 px-4">
               <div className="flex items-center gap-3">
-                 <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF] shadow-[0_0_12px_#635BFF]" />
-                 <h2 className="text-2xl font-black text-[#0A2540] uppercase tracking-tighter">Booking Details</h2>
+                 <div className="w-1.5 h-1.5 rounded-full bg-[#0284C7] shadow-[0_0_12px_#0284C7]" />
+                 <h2 className="text-2xl font-black text-[#0F172A] uppercase tracking-tighter">Booking Details</h2>
               </div>
               
               <div className="flex items-center gap-3 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm overflow-x-auto no-scrollbar">
@@ -230,7 +230,7 @@ const ReportsPage = () => {
                      key={s}
                      onClick={() => setStatusFilter(s)}
                      className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap ${
-                       statusFilter === s ? 'bg-[#0A2540] text-white shadow-lg' : 'text-gray-400 hover:bg-gray-50'
+                       statusFilter === s ? 'bg-[#0F172A] text-white shadow-lg' : 'text-gray-400 hover:bg-gray-50'
                      }`}
                    >
                      {s.replace('_', ' ')}
@@ -277,20 +277,20 @@ const ReportsPage = () => {
                              className="hover:bg-[#F8FAFC]/70 transition-all group"
                            >
                               <td className="px-8 py-6">
-                                 <span className="text-xs font-black text-gray-300 uppercase tracking-widest group-hover:text-[#635BFF] transition-colors">#{b.id}</span>
+                                 <span className="text-xs font-black text-gray-300 uppercase tracking-widest group-hover:text-[#0284C7] transition-colors">#{b.id}</span>
                               </td>
                               <td className="px-8 py-6">
                                  <div className="flex items-center gap-2">
-                                    <span className="text-xs font-black text-[#0A2540]">{b.checkInDate}</span>
+                                    <span className="text-xs font-black text-[#0F172A]">{b.checkInDate}</span>
                                     <ArrowRight size={10} className="text-gray-300" />
-                                    <span className="text-xs font-black text-[#0A2540]">{b.checkOutDate}</span>
+                                    <span className="text-xs font-black text-[#0F172A]">{b.checkOutDate}</span>
                                  </div>
                               </td>
                               <td className="px-8 py-6 text-center">
                                  <span className="text-xs font-bold text-gray-500">{b.roomsCount || 1} Room(s)</span>
                               </td>
                               <td className="px-8 py-6">
-                                 <span className="text-xs font-black text-[#0A2540]">₹{resolveAmount(b).toLocaleString()}</span>
+                                 <span className="text-xs font-black text-[#0F172A]">₹{resolveAmount(b).toLocaleString()}</span>
                               </td>
                               <td className="px-8 py-6 flex justify-end">
                                  <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-black uppercase tracking-widest ${
@@ -312,7 +312,7 @@ const ReportsPage = () => {
                    <p className="text-xs font-black text-gray-400 uppercase tracking-widest">
                       Showing {filteredBookings.length} of {bookings.length} bookings
                    </p>
-                   <p className="text-xs font-black text-[#635BFF] uppercase tracking-widest">
+                   <p className="text-xs font-black text-[#0284C7] uppercase tracking-widest">
                       Real-time Data
                    </p>
                 </div>
@@ -321,18 +321,18 @@ const ReportsPage = () => {
         </div>
 
         {/* Global Action Footer */}
-        <div className="bg-[#0A2540] rounded-[3rem] p-10 text-white relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
-           <div className="absolute top-0 right-0 w-80 h-80 bg-[#635BFF]/10 blur-[120px] -mr-40 -mt-40" />
+        <div className="bg-[#0F172A] rounded-[3rem] p-10 text-white relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
+           <div className="absolute top-0 right-0 w-80 h-80 bg-[#0284C7]/10 blur-[120px] -mr-40 -mt-40" />
            <div className="flex items-center gap-6">
               <div className="w-16 h-16 rounded-[2rem] bg-white/5 flex items-center justify-center text-white/40">
                  <BarChart2 size={32} />
               </div>
               <div>
-                 <p className="text-xs font-black text-[#635BFF] uppercase tracking-[0.3em] mb-1">Data Summary</p>
+                 <p className="text-xs font-black text-[#0284C7] uppercase tracking-[0.3em] mb-1">Data Summary</p>
                  <p className="text-xl font-bold tracking-tight">Reports are based on your confirmed hotel bookings.</p>
               </div>
            </div>
-           <button onClick={() => window.print()} className="px-10 py-5 bg-white text-[#0A2540] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#635BFF] hover:text-white transition-all shadow-xl shadow-white/5 flex items-center gap-3 active:scale-95">
+           <button onClick={() => window.print()} className="px-10 py-5 bg-white text-[#0F172A] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#0284C7] hover:text-white transition-all shadow-xl shadow-white/5 flex items-center gap-3 active:scale-95">
               Print Report <ArrowRight size={16} />
            </button>
         </div>

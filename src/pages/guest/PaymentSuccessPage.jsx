@@ -46,7 +46,7 @@ const PaymentSuccessPage = () => {
             <CheckCircle2 size={48} className="text-green-500" />
           </motion.div>
 
-          <h1 className="text-4xl font-black text-[#0A2540] tracking-tighter uppercase leading-tight mb-4">
+          <h1 className="text-4xl font-black text-[#0F172A] tracking-tighter uppercase leading-tight mb-4">
             {isVerifying ? 'Verifying...' : 'Stay Confirmed'}
           </h1>
           <p className="text-sm font-medium text-gray-400 max-w-xs mx-auto mb-12">
@@ -57,12 +57,12 @@ const PaymentSuccessPage = () => {
 
           <div className="grid grid-cols-1 gap-4 mb-12">
              <div className="bg-gray-50 rounded-[2rem] p-6 border border-gray-100 flex items-center gap-5 text-left transition-all hover:bg-gray-100/50">
-               <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-[#635BFF] shadow-sm">
+               <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-[#0284C7] shadow-sm">
                  {isVerifying ? <Loader2 size={20} className="animate-spin" /> : <BookmarkCheck size={20} />}
                </div>
                <div className="flex-1 overflow-hidden">
                   <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Reference ID</p>
-                  <p className="text-xs font-black text-[#0A2540] uppercase tracking-tighter truncate">
+                  <p className="text-xs font-black text-[#0F172A] uppercase tracking-tighter truncate">
                     {isVerifying ? 'SECURE_HASHING...' : (latestBooking ? `#NOX-${String(latestBooking.id).padStart(6, '0')}` : 'VERIFIED_SECURE')}
                   </p>
                </div>
@@ -72,14 +72,14 @@ const PaymentSuccessPage = () => {
           <div className="flex flex-col gap-3">
              <button 
                onClick={() => navigate('/bookings')}
-               className="w-full py-5 bg-[#0A2540] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-[#635BFF] transition-all shadow-xl shadow-[#0A2540]/20 flex items-center justify-center gap-3 active:scale-95 group"
+               className="w-full py-5 bg-[#0F172A] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-[#0284C7] transition-all shadow-xl shadow-[#0F172A]/20 flex items-center justify-center gap-3 active:scale-95 group"
              >
                Go to My Stays
                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
              </button>
              <button 
                onClick={() => navigate('/')}
-               className="w-full py-4 text-gray-400 hover:text-[#0A2540] font-black text-xs uppercase tracking-widest transition-colors"
+               className="w-full py-4 text-gray-400 hover:text-[#0F172A] font-black text-xs uppercase tracking-widest transition-colors"
              >
                Return to Home
              </button>
@@ -88,7 +88,7 @@ const PaymentSuccessPage = () => {
 
         {/* Brand Decoration */}
         <div className="mt-12 pt-8 border-t border-gray-50 flex items-center justify-center gap-3 opacity-20">
-           <div className="w-6 h-6 bg-[#0A2540] rounded-lg" />
+           <div className="w-6 h-6 bg-[#0F172A] rounded-lg" />
            <span className="text-[10px] font-black uppercase tracking-[0.4em]">Nox Nexus Premium</span>
         </div>
       </motion.div>

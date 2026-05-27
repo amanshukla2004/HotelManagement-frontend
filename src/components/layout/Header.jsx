@@ -21,15 +21,15 @@ const Header = () => {
 
   return (
     <div className="absolute top-0 left-0 right-0 z-[100] pt-6 px-6">
-      <header className="mx-auto max-w-7xl transition-all duration-500 rounded-[2.5rem] bg-[#0A2540]/30 backdrop-blur-3xl border border-white/10 shadow-2xl shadow-black/30">
+      <header className="mx-auto max-w-7xl transition-all duration-500 rounded-[2.5rem] bg-[#0F172A]/30 backdrop-blur-3xl border border-white/10 shadow-2xl shadow-black/30">
         <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between">
         
         {/* Logo */}
         <NavLink to="/" className="flex items-center space-x-2.5 group transition-transform hover:scale-[1.02]">
-          <div className="w-10 h-10 bg-gradient-to-br from-[#0A2540] to-[#635BFF] rounded-2xl flex items-center justify-center shadow-lg shadow-[#635BFF]/20 group-hover:rotate-6 transition-all duration-300">
+          <div className="w-10 h-10 bg-gradient-to-br from-[#0F172A] to-[#0284C7] rounded-2xl flex items-center justify-center shadow-lg shadow-[#0284C7]/20 group-hover:rotate-6 transition-all duration-300">
             <Hotel className="text-white" size={22} />
           </div>
-          <span className="text-2xl font-display font-black tracking-tighter group-hover:text-[#635BFF] transition-colors text-white">
+          <span className="text-2xl font-display font-black tracking-tighter group-hover:text-[#0284C7] transition-colors text-white">
             NOX
           </span>
         </NavLink>
@@ -37,17 +37,17 @@ const Header = () => {
         <div className="hidden md:flex items-center space-x-8 ml-auto mr-8">
           <nav className="flex items-center space-x-6">
             {role !== 'HOTEL_MANAGER' && (
-              <NavLink to="/bookings" className={({isActive}) => `text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#635BFF] ${isActive ? 'text-[#635BFF]' : 'text-white/60'}`}>
+              <NavLink to="/bookings" className={({isActive}) => `text-[15px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#0284C7] ${isActive ? 'text-[#0284C7]' : 'text-white/60'}`}>
                 My Bookings
               </NavLink>
             )}
-            <NavLink to="/support" className={({isActive}) => `text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#635BFF] ${isActive ? 'text-[#635BFF]' : 'text-white/60'}`}>
+            <NavLink to="/support" className={({isActive}) => `text-[15px] font-black uppercase tracking-[0.2em] transition-all hover:text-[#0284C7] ${isActive ? 'text-[#0284C7]' : 'text-white/60'}`}>
               Support
             </NavLink>
           </nav>
 
           {role === 'HOTEL_MANAGER' && (
-            <NavLink to="/admin/hotels" className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-[#635BFF] px-6 py-2.5 rounded-full hover:bg-white hover:text-[#635BFF] transition-all shadow-lg shadow-[#635BFF]/30 active:scale-95 leading-none flex items-center h-10">
+            <NavLink to="/admin/hotels" className="text-[10px] font-black uppercase tracking-[0.2em] text-white bg-[#0284C7] px-6 py-2.5 rounded-full hover:bg-white hover:text-[#0284C7] transition-all shadow-lg shadow-[#0284C7]/30 active:scale-95 leading-none flex items-center h-10">
               Portal
             </NavLink>
           )}
@@ -63,11 +63,11 @@ const Header = () => {
                   isMenuOpen ? 'bg-white border-gray-100 shadow-md ring-4 ring-gray-50' : 'bg-gray-50 border-gray-100 hover:bg-white'
                 }`}
               >
-                <div className="relative w-7 h-7 rounded-full bg-gradient-to-tr from-[#635BFF] to-[#0A2540] text-white flex justify-center items-center text-xs font-black shadow-sm">
+                <div className="relative w-7 h-7 rounded-full bg-gradient-to-tr from-[#0284C7] to-[#0F172A] text-white flex justify-center items-center text-xs font-black shadow-sm">
                   {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
                   <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full shadow-sm" />
                 </div>
-                <span className="text-xs font-black text-[#0A2540] hidden sm:block">ACCOUNT</span>
+                <span className="text-xs font-black text-[#0F172A] hidden sm:block">ACCOUNT</span>
                 <ChevronDown size={14} className={`text-gray-400 transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -82,7 +82,7 @@ const Header = () => {
                   >
                     <div className="px-4 py-3 mb-2 border-b border-gray-50 flex flex-col gap-0.5">
                       <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Signed in as</p>
-                      <p className="text-sm font-black text-[#0A2540] truncate leading-tight">{user?.name || 'Guest User'}</p>
+                      <p className="text-sm font-black text-[#0F172A] truncate leading-tight">{user?.name || 'Guest User'}</p>
                       <p className="text-[10px] font-bold text-gray-400 truncate tracking-tight">{user?.email}</p>
                     </div>
 
@@ -90,7 +90,7 @@ const Header = () => {
                       <NavLink 
                         to="/profile" 
                         onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 px-3 py-2 text-xs font-bold text-gray-600 hover:text-[#635BFF] hover:bg-[#F6F9FC] rounded-xl transition-all"
+                        className="flex items-center gap-3 px-3 py-2 text-xs font-bold text-gray-600 hover:text-[#0284C7] hover:bg-[#F6F9FC] rounded-xl transition-all"
                       >
                         <UserCircle2 size={16} /> My Profile
                       </NavLink>
@@ -99,14 +99,14 @@ const Header = () => {
                           <NavLink 
                             to="/bookings" 
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 text-xs font-bold text-gray-600 hover:text-[#635BFF] hover:bg-[#F6F9FC] rounded-xl transition-all"
+                            className="flex items-center gap-3 px-3 py-2 text-xs font-bold text-gray-600 hover:text-[#0284C7] hover:bg-[#F6F9FC] rounded-xl transition-all"
                           >
                             <Hotel size={16} /> My Bookings
                           </NavLink>
                           <NavLink 
                             to="/guests" 
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 text-xs font-bold text-gray-600 hover:text-[#635BFF] hover:bg-[#F6F9FC] rounded-xl transition-all"
+                            className="flex items-center gap-3 px-3 py-2 text-xs font-bold text-gray-600 hover:text-[#0284C7] hover:bg-[#F6F9FC] rounded-xl transition-all"
                           >
                             <User size={16} /> Saved Guests
                           </NavLink>
@@ -127,7 +127,7 @@ const Header = () => {
               </AnimatePresence>
             </div>
           ) : (
-            <NavLink to="/login" className="flex items-center space-x-2.5 bg-[#0A2540] text-white px-5 py-2.5 rounded-2xl font-black text-xs hover:bg-[#635BFF] transition-all shadow-lg shadow-[#0A2540]/20 active:scale-[0.98]">
+            <NavLink to="/login" className="flex items-center space-x-2.5 bg-[#0F172A] text-white px-5 py-2.5 rounded-2xl font-black text-xs hover:bg-[#0284C7] transition-all shadow-lg shadow-[#0F172A]/20 active:scale-[0.98]">
               <User size={16} />
               <span>SIGN IN</span>
             </NavLink>

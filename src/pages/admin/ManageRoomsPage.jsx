@@ -109,19 +109,19 @@ const ManageRoomsPage = () => {
           <div className="space-y-6">
             <button 
               onClick={() => navigate('/admin/hotels')} 
-              className="flex items-center gap-3 text-sm font-black text-gray-400 uppercase tracking-[0.2em] hover:text-[#635BFF] transition-all group"
+              className="flex items-center gap-3 text-sm font-black text-gray-400 uppercase tracking-[0.2em] hover:text-[#0284C7] transition-all group"
             >
               <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
               Return to Properties
             </button>
             <div className="space-y-3">
               <div className="flex items-center gap-5">
-                 <div className="w-14 h-14 rounded-2xl bg-[#635BFF] flex items-center justify-center text-white shadow-xl shadow-[#635BFF]/20">
+                 <div className="w-14 h-14 rounded-2xl bg-[#0284C7] flex items-center justify-center text-white shadow-xl shadow-[#0284C7]/20">
                     <Layers size={28} />
                  </div>
                  <div>
-                    <h1 className="text-5xl font-black text-[#0A2540] tracking-tighter uppercase leading-none">{hotelName}</h1>
-                    <p className="text-[#635BFF] font-black text-xs uppercase tracking-[0.4em] mt-3">Room Type Management & Configurations</p>
+                    <h1 className="text-5xl font-black text-[#0F172A] tracking-tighter uppercase leading-none">{hotelName}</h1>
+                    <p className="text-[#0284C7] font-black text-xs uppercase tracking-[0.4em] mt-3">Room Type Management & Configurations</p>
                  </div>
               </div>
             </div>
@@ -131,13 +131,13 @@ const ManageRoomsPage = () => {
              <button
                onClick={fetchRooms}
                disabled={isLoading}
-               className="p-5 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0A2540] hover:border-gray-300 transition-all shadow-sm"
+               className="p-5 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0F172A] hover:border-gray-300 transition-all shadow-sm"
              >
                <RefreshCw size={24} className={isLoading ? 'animate-spin' : ''} />
              </button>
              <button
                onClick={openCreate}
-               className="flex items-center gap-4 bg-[#0A2540] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-[#635BFF] transition-all shadow-2xl shadow-[#0A2540]/20 active:scale-95"
+               className="flex items-center gap-4 bg-[#0F172A] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-[#0284C7] transition-all shadow-2xl shadow-[#0F172A]/20 active:scale-95"
              >
                <Plus size={20} />
                <span>Add Room Type</span>
@@ -161,9 +161,9 @@ const ManageRoomsPage = () => {
                 <div className="w-20 h-20 bg-gray-50 rounded-[2rem] flex items-center justify-center text-gray-200 mb-6">
                    <Bed size={32} />
                 </div>
-                <h3 className="text-xl font-black text-[#0A2540] uppercase tracking-tighter mb-2">No Rooms Defined</h3>
+                <h3 className="text-xl font-black text-[#0F172A] uppercase tracking-tighter mb-2">No Rooms Defined</h3>
                 <p className="text-sm text-gray-400 font-medium mb-8">This property needs room types to accept bookings.</p>
-                <button onClick={openCreate} className="text-[#635BFF] font-black text-xs uppercase tracking-[0.2em] hover:tracking-[0.3em] transition-all">Add Your First Room →</button>
+                <button onClick={openCreate} className="text-[#0284C7] font-black text-xs uppercase tracking-[0.2em] hover:tracking-[0.3em] transition-all">Add Your First Room →</button>
              </div>
            ) : (
              <AnimatePresence>
@@ -176,8 +176,8 @@ const ManageRoomsPage = () => {
                     className="bg-white rounded-[3rem] border border-gray-100 p-8 md:p-10 flex flex-col md:flex-row items-center gap-10 shadow-sm hover:shadow-2xl transition-all group"
                   >
                     {/* Thumbnail placeholder */}
-                    <div className="w-full md:w-48 h-48 rounded-[2.5rem] bg-gray-50 flex items-center justify-center text-gray-200 relative overflow-hidden shrink-0 group-hover:bg-[#635BFF]/5 transition-colors">
-                       <Bed size={40} className="group-hover:text-[#635BFF] transition-colors" />
+                    <div className="w-full md:w-48 h-48 rounded-[2.5rem] bg-gray-50 flex items-center justify-center text-gray-200 relative overflow-hidden shrink-0 group-hover:bg-[#0284C7]/5 transition-colors">
+                       <Bed size={40} className="group-hover:text-[#0284C7] transition-colors" />
                        <div className="absolute top-4 left-4">
                           <span className="px-3 py-1 bg-white border border-gray-100 rounded-lg text-xs font-black text-gray-400 uppercase tracking-widest shadow-sm">ID: {room.id}</span>
                        </div>
@@ -186,13 +186,13 @@ const ManageRoomsPage = () => {
                     <div className="flex-1 space-y-4 text-center md:text-left">
                        <div>
                           <div className="flex items-center justify-center md:justify-start gap-3 mb-1">
-                             <h4 className="text-2xl font-black text-[#0A2540] tracking-tighter uppercase leading-none">{room.type}</h4>
+                             <h4 className="text-2xl font-black text-[#0F172A] tracking-tighter uppercase leading-none">{room.type}</h4>
                              <span className="px-2 py-0.5 bg-green-50 text-green-600 text-xs font-black uppercase tracking-widest rounded-md border border-green-100">Active</span>
                           </div>
                           <div className="flex items-center justify-center md:justify-start gap-4 text-xs font-black text-gray-400 uppercase tracking-widest">
-                             <span className="flex items-center gap-1.5"><Users size={12} className="text-[#635BFF]" /> Max Sleep: {room.capacity}</span>
+                             <span className="flex items-center gap-1.5"><Users size={12} className="text-[#0284C7]" /> Max Sleep: {room.capacity}</span>
                              <span className="w-1.5 h-1.5 rounded-full bg-gray-100" />
-                             <span className="flex items-center gap-1.5"><Maximize2 size={12} className="text-[#F6A100]" /> {room.totalCount} total rooms</span>
+                             <span className="flex items-center gap-1.5"><Maximize2 size={12} className="text-[#F97316]" /> {room.totalCount} total rooms</span>
                           </div>
                        </div>
                        
@@ -206,18 +206,18 @@ const ManageRoomsPage = () => {
                     <div className="text-center md:text-right shrink-0 md:pl-12 md:border-l border-gray-50 space-y-4 min-w-[200px]">
                        <div>
                           <p className="text-[10px] font-black text-gray-300 uppercase tracking-[0.3em] mb-1">Base Price</p>
-                          <p className="text-5xl font-black text-[#0A2540] tracking-tighter leading-none">₹{room.basePrice?.toLocaleString()}</p>
+                          <p className="text-5xl font-black text-[#0F172A] tracking-tighter leading-none">₹{room.basePrice?.toLocaleString()}</p>
                        </div>
                        
                        <div className="flex items-center justify-center md:justify-end gap-2 pt-2">
                           <button 
                             onClick={() => navigate(`/admin/hotels/${hotelId}/rooms/${room.id}/inventory`, { state: { hotelName, roomType: room.type } })}
-                            className="p-3.5 bg-[#0A2540] text-white rounded-2xl hover:bg-[#635BFF] transition-all shadow-lg active:scale-95"
+                            className="p-3.5 bg-[#0F172A] text-white rounded-2xl hover:bg-[#0284C7] transition-all shadow-lg active:scale-95"
                             title="Manage Availability"
                           >
                              <BarChart size={18} />
                           </button>
-                          <button onClick={() => openEdit(room)} className="p-3.5 bg-gray-50 text-gray-400 hover:text-[#0A2540] rounded-2xl hover:bg-gray-100 transition-all" title="Edit Room">
+                          <button onClick={() => openEdit(room)} className="p-3.5 bg-gray-50 text-gray-400 hover:text-[#0F172A] rounded-2xl hover:bg-gray-100 transition-all" title="Edit Room">
                              <Edit2 size={18} />
                           </button>
                           <button onClick={() => setDeleteTarget(room)} className="p-3.5 bg-red-50 text-red-400 hover:bg-red-500 hover:text-white rounded-2xl transition-all" title="Delete Room">
@@ -233,13 +233,13 @@ const ManageRoomsPage = () => {
 
         {/* Global Action Footer */}
         {!isLoading && rooms.length > 0 && (
-           <div className="bg-[#0A2540] rounded-[2.5rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#635BFF]/10 blur-[100px] -mr-32 -mt-32" />
+           <div className="bg-[#0F172A] rounded-[2.5rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#0284C7]/10 blur-[100px] -mr-32 -mt-32" />
               <div className="space-y-1">
-                 <p className="text-xs font-black text-[#635BFF] uppercase tracking-[0.3em]">System Status</p>
+                 <p className="text-xs font-black text-[#0284C7] uppercase tracking-[0.3em]">System Status</p>
                  <p className="text-xl font-bold tracking-tight">Room details are saved and live in the system.</p>
               </div>
-              <button onClick={openCreate} className="px-10 py-4 bg-white text-[#0A2540] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#635BFF] hover:text-white transition-all shadow-xl shadow-white/5 flex items-center gap-2">
+              <button onClick={openCreate} className="px-10 py-4 bg-white text-[#0F172A] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#0284C7] hover:text-white transition-all shadow-xl shadow-white/5 flex items-center gap-2">
                  New Room Type <ArrowRight size={16} />
               </button>
            </div>

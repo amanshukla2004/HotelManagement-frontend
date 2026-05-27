@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { XCircle, ArrowLeft, AlertCircle } from 'lucide-react';
+import { XCircle, ArrowLeft, AlertTriangle } from 'lucide-react';
 
-const PaymentCancelPage = () => {
+const PaymentFailurePage = () => {
   const navigate = useNavigate();
 
   return (
@@ -22,18 +22,18 @@ const PaymentCancelPage = () => {
           </motion.div>
 
           <h1 className="text-4xl font-black text-[#0F172A] tracking-tighter uppercase leading-tight mb-4">
-            Payment Cancelled
+            Payment Failed
           </h1>
           <p className="text-sm font-medium text-gray-400 max-w-xs mx-auto mb-12">
-            The transaction was not completed. Your initial booking remains pending and is not yet confirmed.
+            We couldn't process your payment. Your booking has not been confirmed.
           </p>
 
           <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100/50 flex items-start gap-4 text-left mb-12">
-             <AlertCircle size={20} className="text-amber-500 shrink-0 mt-0.5" />
+             <AlertTriangle size={20} className="text-amber-500 shrink-0 mt-0.5" />
              <div>
-                <p className="text-xs font-black text-amber-700 uppercase tracking-widest mb-1">Information</p>
+                <p className="text-xs font-black text-amber-700 uppercase tracking-widest mb-1">Try Again</p>
                 <p className="text-xs font-bold text-amber-600/80 leading-relaxed uppercase tracking-wider">
-                  You can try paying again from your stay history or find another property. No charges were made to your account.
+                  You can retry the payment from your bookings history. Please check your payment details or use a different method.
                 </p>
              </div>
           </div>
@@ -59,4 +59,4 @@ const PaymentCancelPage = () => {
   );
 };
 
-export default PaymentCancelPage;
+export default PaymentFailurePage;

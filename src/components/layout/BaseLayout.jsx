@@ -8,7 +8,7 @@ const BaseLayout = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8FAFC] selection:bg-[#635BFF]/30 selection:text-[#635BFF]">
+    <div className="flex flex-col min-h-screen bg-[#F8FAFC] selection:bg-[#0284C7]/30 selection:text-[#0284C7]">
       {/* Custom Cursor */}
       {/* <CustomCursor /> */}
 

@@ -18,19 +18,19 @@ const StepBar = ({ current }) => (
     {STEPS.map((label, i) => (
       <div key={label} className="flex flex-col items-center gap-2 flex-1 relative">
         <div className={`relative z-10 w-8 h-8 rounded-2xl flex items-center justify-center text-xs font-black transition-all duration-500 border ${
-          i < current ? 'bg-[#635BFF] text-white border-transparent shadow-lg shadow-[#635BFF]/30' :
-          i === current ? 'bg-[#0A2540] text-white border-transparent' : 'bg-white text-gray-300 border-gray-100'
+          i < current ? 'bg-[#F97316] text-white border-transparent shadow-lg shadow-[#F97316]/30' :
+          i === current ? 'bg-[#0F172A] text-white border-transparent' : 'bg-white text-gray-300 border-gray-100'
         }`}>
           {i < current ? <Check size={14} /> : i + 1}
         </div>
         <span className={`text-xs font-black uppercase tracking-widest transition-colors duration-500 ${
-          i <= current ? 'text-[#0A2540]' : 'text-gray-300'
+          i <= current ? 'text-[#0F172A]' : 'text-gray-300'
         }`}>
           {label}
         </span>
         {i < STEPS.length - 1 && (
           <div className={`absolute left-1/2 top-4 w-full h-[1px] -z-0 transition-all duration-700 ${
-            i < current ? 'bg-[#635BFF]' : 'bg-gray-100'
+            i < current ? 'bg-[#F97316]' : 'bg-gray-100'
           }`} style={{ width: 'calc(100% - 32px)', left: 'calc(50% + 16px)' }} />
         )}
       </div>
@@ -41,7 +41,7 @@ const StepBar = ({ current }) => (
 // ── Utility ───────────────────────────────────────────────────────────────────
 const todayStr = () => new Date().toISOString().split('T')[0];
 
-const inputClass = 'w-full bg-gray-50 border border-transparent rounded-2xl px-4 py-3 text-sm font-bold text-[#0A2540] focus:bg-white focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/5 outline-none transition-all placeholder:text-gray-300';
+const inputClass = 'w-full bg-gray-50 border border-transparent rounded-2xl px-4 py-3 text-sm font-bold text-[#0F172A] focus:bg-white focus:border-[#F97316] focus:ring-4 focus:ring-[#F97316]/5 outline-none transition-all placeholder:text-gray-300';
 const labelClass = 'block text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-1';
 
 const BookingDialog = ({ hotel, room, onClose }) => {
@@ -216,7 +216,7 @@ const BookingDialog = ({ hotel, room, onClose }) => {
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-[#0A2540]/60 backdrop-blur-md z-[150] flex items-center justify-center p-4 overflow-y-auto"
+        className="fixed inset-0 bg-[#0F172A]/60 backdrop-blur-md z-[150] flex items-center justify-center p-4 overflow-y-auto"
         onClick={(e) => e.target === e.currentTarget && onClose()}
       >
         <motion.div
@@ -227,16 +227,16 @@ const BookingDialog = ({ hotel, room, onClose }) => {
           onClick={e => e.stopPropagation()}
         >
           {/* Top Bar Decor */}
-          <div className="h-2 bg-gradient-to-r from-[#635BFF] to-[#0A2540] w-full" />
+          <div className="h-2 bg-gradient-to-r from-[#F97316] to-[#0F172A] w-full" />
 
           <div className="px-8 pt-8 pb-4 flex items-start justify-between">
             <div>
-               <h2 className="text-3xl font-black text-[#0A2540] tracking-tighter uppercase leading-none mb-2">Book Your Stay</h2>
-               <div className="flex items-center gap-2 text-xs font-black text-[#635BFF] uppercase tracking-[0.2em]">
+               <h2 className="text-3xl font-black text-[#0F172A] tracking-tighter uppercase leading-none mb-2">Book Your Stay</h2>
+               <div className="flex items-center gap-2 text-xs font-black text-[#F97316] uppercase tracking-[0.2em]">
                  <ShieldCheck size={14} /> Secure Connection
                </div>
             </div>
-            <button onClick={onClose} className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#0A2540] transition-colors"><X size={20} /></button>
+            <button onClick={onClose} className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#0F172A] transition-colors"><X size={20} /></button>
           </div>
 
           <div className="px-8 pb-10">
@@ -257,11 +257,11 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                 <div className="bg-gray-50 rounded-[2rem] p-6 border border-gray-100 flex items-center justify-between">
                   <div className="space-y-1">
                     <p className="text-xs font-black text-gray-400 uppercase tracking-widest leading-none">Room Type</p>
-                    <h4 className="text-xl font-black text-[#0A2540] tracking-tighter uppercase">{room?.type}</h4>
-                    <p className="text-xs font-black text-[#635BFF] uppercase tracking-widest">{hotel?.name}</p>
+                    <h4 className="text-xl font-black text-[#0F172A] tracking-tighter uppercase">{room?.type}</h4>
+                    <p className="text-xs font-black text-[#F97316] uppercase tracking-widest">{hotel?.name}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-black text-[#0A2540] tracking-tighter">₹{room?.basePrice?.toLocaleString()}</p>
+                    <p className="text-2xl font-black text-[#0F172A] tracking-tighter">₹{room?.basePrice?.toLocaleString()}</p>
                     <p className="text-xs font-black text-gray-400 uppercase tracking-widest">PER NIGHT</p>
                   </div>
                 </div>
@@ -278,8 +278,12 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                     <label className={labelClass}>Check-Out</label>
                     <div className="relative">
                       <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" size={16} />
-                      <input id="dialog-out" type="date" min={checkinValue || todayStr()} {...register('checkOutDate', { required: true })} className={`${inputClass} pl-12`} />
+                      <input id="dialog-out" type="date" min={checkinValue || todayStr()} {...register('checkOutDate', { 
+                        required: "Required",
+                        validate: value => new Date(value) >= new Date(checkinValue || todayStr()) || "Invalid date"
+                      })} className={`${inputClass} pl-12 ${errors.checkOutDate ? 'border-red-500 focus:border-red-500 ring-red-500/20' : ''}`} />
                     </div>
+                    {errors.checkOutDate && <span className="text-[10px] text-red-500 font-bold mt-1 inline-block">{errors.checkOutDate.message}</span>}
                   </div>
                 </div>
 
@@ -289,12 +293,12 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                      <span className="text-xs font-black text-gray-500 uppercase tracking-[0.2em] flex-1">Number of Units</span>
                      <div className="flex items-center gap-4">
                         {/* Placeholder for real counter if needed, but input works */}
-                        <input type="number" min={1} max={room?.totalCount} {...register('roomsCount')} className="w-16 bg-white border border-gray-100 rounded-xl text-center py-2 font-black text-[#0A2540]" />
+                        <input type="number" min={1} max={room?.totalCount} {...register('roomsCount')} className="w-16 bg-white border border-gray-100 rounded-xl text-center py-2 font-black text-[#0F172A]" />
                      </div>
                   </div>
                 </div>
 
-                <button type="submit" disabled={loading} className="w-full py-5 bg-[#0A2540] hover:bg-[#635BFF] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.3em] transition-all shadow-xl shadow-[#0A2540]/20 flex items-center justify-center gap-3 active:scale-[0.98]">
+                <button type="submit" disabled={loading} className="w-full py-5 bg-[#0F172A] hover:bg-[#F97316] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.3em] transition-all shadow-xl shadow-[#0F172A]/20 flex items-center justify-center gap-3 active:scale-[0.98]">
                   {loading ? <Loader2 size={18} className="animate-spin" /> : <ChevronRight size={18} />}
                   {loading ? 'Processing...' : 'Confirm Dates'}
                 </button>
@@ -306,7 +310,7 @@ const BookingDialog = ({ hotel, room, onClose }) => {
               <div className="space-y-6">
                 <div className="flex items-center justify-between px-1">
                    <h4 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">Guest Details</h4>
-                   {selectedGuestIds.length > 0 && <span className="text-xs font-black text-[#635BFF] bg-[#635BFF]/5 px-2 py-0.5 rounded-md uppercase tracking-widest">{selectedGuestIds.length} Selected</span>}
+                   {selectedGuestIds.length > 0 && <span className="text-xs font-black text-[#F97316] bg-[#F97316]/5 px-2 py-0.5 rounded-md uppercase tracking-widest">{selectedGuestIds.length} Selected</span>}
                 </div>
 
                 <div className="space-y-3 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
@@ -323,17 +327,17 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                         key={g.id}
                         onClick={() => setSelectedGuestIds(p => p.includes(g.id) ? p.filter(x => x !== g.id) : [...p, g.id])}
                         className={`w-full flex items-center gap-4 p-4 rounded-2xl border transition-all ${
-                          selectedGuestIds.includes(g.id) ? 'border-[#635BFF] bg-[#635BFF]/5 ring-2 ring-[#635BFF]/10' : 'border-gray-50 bg-white hover:border-gray-200 shadow-sm'
+                          selectedGuestIds.includes(g.id) ? 'border-[#F97316] bg-[#F97316]/5 ring-2 ring-[#F97316]/10' : 'border-gray-50 bg-white hover:border-gray-200 shadow-sm'
                         }`}
                       >
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black shadow-sm ${selectedGuestIds.includes(g.id) ? 'bg-[#635BFF] text-white' : 'bg-gray-100 text-gray-400'}`}>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black shadow-sm ${selectedGuestIds.includes(g.id) ? 'bg-[#F97316] text-white' : 'bg-gray-100 text-gray-400'}`}>
                           {g.name[0]?.toUpperCase()}
                         </div>
                         <div className="flex-1 text-left">
-                           <p className="text-sm font-black text-[#0A2540] tracking-tight">{g.name}</p>
+                           <p className="text-sm font-black text-[#0F172A] tracking-tight">{g.name}</p>
                            <p className="text-xs font-black text-gray-400 uppercase tracking-widest">{g.gender} · {g.age} yrs</p>
                         </div>
-                        {selectedGuestIds.includes(g.id) && <CheckCircle2 size={18} className="text-[#635BFF]" />}
+                        {selectedGuestIds.includes(g.id) && <CheckCircle2 size={18} className="text-[#F97316]" />}
                       </button>
                     ))
                   )}
@@ -341,7 +345,7 @@ const BookingDialog = ({ hotel, room, onClose }) => {
 
                 {showAddGuest ? (
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-6 bg-gray-50 rounded-[2rem] border border-gray-100 space-y-4">
-                     <p className="text-xs font-black text-[#635BFF] uppercase tracking-widest mb-4">Add Guest</p>
+                     <p className="text-xs font-black text-[#F97316] uppercase tracking-widest mb-4">Add Guest</p>
                      <input placeholder="Full Name" value={newGuest.name} onChange={e => setNewGuest(p => ({...p, name: e.target.value}))} className={inputClass} />
                      <div className="grid grid-cols-2 gap-4">
                         <select value={newGuest.gender} onChange={e => setNewGuest(p => ({...p, gender: e.target.value}))} className={`${inputClass} appearance-none`}>
@@ -353,22 +357,22 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                      </div>
                      <div className="flex gap-2 pt-2">
                         <button onClick={() => setShowAddGuest(false)} className="flex-1 py-3 text-xs font-black text-gray-400 uppercase tracking-widest hover:bg-white rounded-xl transition">Dismiss</button>
-                        <button onClick={handleCreateGuest} disabled={addingGuest} className="flex-1 py-3 bg-[#635BFF] text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-[#635BFF]/20">
+                        <button onClick={handleCreateGuest} disabled={addingGuest} className="flex-1 py-3 bg-[#F97316] text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-[#F97316]/20">
                           {addingGuest ? 'Saving...' : 'Save Guest'}
                         </button>
                      </div>
                   </motion.div>
                 ) : (
-                  <button onClick={() => setShowAddGuest(true)} className="w-full py-4 border border-dashed border-gray-200 text-gray-400 hover:text-[#635BFF] hover:border-[#635BFF] hover:bg-[#635BFF]/5 rounded-2xl flex items-center justify-center gap-2 text-xs font-black uppercase tracking-widest transition-all">
+                  <button onClick={() => setShowAddGuest(true)} className="w-full py-4 border border-dashed border-gray-200 text-gray-400 hover:text-[#F97316] hover:border-[#F97316] hover:bg-[#F97316]/5 rounded-2xl flex items-center justify-center gap-2 text-xs font-black uppercase tracking-widest transition-all">
                     <UserPlus size={16} /> Add Guest
                   </button>
                 )}
 
                 <div className="flex gap-4 pt-4">
-                   <button onClick={() => setStep(2)} className="flex-none px-8 py-4 border border-gray-100 text-gray-400 hover:text-[#0A2540] hover:bg-gray-50 rounded-2xl text-xs font-black uppercase tracking-widest transition-all">
+                   <button onClick={() => setStep(2)} className="flex-none px-8 py-4 border border-gray-100 text-gray-400 hover:text-[#0F172A] hover:bg-gray-50 rounded-2xl text-xs font-black uppercase tracking-widest transition-all">
                      Skip
                    </button>
-                   <button onClick={handleAddGuests} disabled={loading || selectedGuestIds.length === 0} className="flex-1 py-4 bg-[#0A2540] hover:bg-[#635BFF] text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-[#0A2540]/20 disabled:opacity-30">
+                   <button onClick={handleAddGuests} disabled={loading || selectedGuestIds.length === 0} className="flex-1 py-4 bg-[#0F172A] hover:bg-[#F97316] text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-[#0F172A]/20 disabled:opacity-30">
                      Add Guest & Continue
                    </button>
                 </div>
@@ -379,15 +383,15 @@ const BookingDialog = ({ hotel, room, onClose }) => {
             {step === 2 && (
               <div className="space-y-8">
                 <div className="relative group">
-                   <div className="absolute inset-0 bg-gradient-to-br from-[#635BFF] to-[#0A2540] rounded-[2.5rem] blur-2xl opacity-10 group-hover:opacity-20 transition-opacity" />
+                   <div className="absolute inset-0 bg-gradient-to-br from-[#F97316] to-[#0F172A] rounded-[2.5rem] blur-2xl opacity-10 group-hover:opacity-20 transition-opacity" />
                    <div className="relative bg-white border border-gray-100 rounded-[2.5rem] p-8">
                       <div className="flex justify-between items-start mb-8 relative z-10">
                          <div>
-                            <p className="text-xs font-black text-[#635BFF] uppercase tracking-[0.3em] mb-1">Reservation Details</p>
-                            <h4 className="text-3xl font-black text-[#0A2540] tracking-tighter leading-none">{room?.type}</h4>
+                            <p className="text-xs font-black text-[#F97316] uppercase tracking-[0.3em] mb-1">Reservation Details</p>
+                            <h4 className="text-3xl font-black text-[#0F172A] tracking-tighter leading-none">{room?.type}</h4>
                             <p className="text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">{hotel?.name} · {hotel?.city}</p>
                          </div>
-                         <div className="w-14 h-14 rounded-2xl bg-[#0A2540] flex items-center justify-center text-white shadow-xl shadow-[#0A2540]/20">
+                         <div className="w-14 h-14 rounded-2xl bg-[#0F172A] flex items-center justify-center text-white shadow-xl shadow-[#0F172A]/20">
                             <ShieldCheck size={24} />
                          </div>
                       </div>
@@ -419,8 +423,8 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                          })()}
 
                          <div className="flex justify-between items-center pt-2">
-                            <span className="text-sm font-black text-[#0A2540] uppercase tracking-widest">Total Price</span>
-                            <span className="text-3xl font-black text-[#635BFF] tracking-tighter shrink-0 ml-2">₹{bookingDetails?.amount?.toLocaleString() || room?.basePrice?.toLocaleString()}</span>
+                            <span className="text-sm font-black text-[#0F172A] uppercase tracking-widest">Total Price</span>
+                            <span className="text-3xl font-black text-[#F97316] tracking-tighter shrink-0 ml-2">₹{bookingDetails?.amount?.toLocaleString() || room?.basePrice?.toLocaleString()}</span>
                          </div>
                       </div>
 
@@ -431,7 +435,7 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                    </div>
                 </div>
 
-                <button onClick={handlePayment} disabled={loading} className="w-full py-5 bg-[#635BFF] hover:bg-[#0A2540] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.3em] transition-all shadow-xl shadow-[#635BFF]/30 flex items-center justify-center gap-3 active:scale-95">
+                <button onClick={handlePayment} disabled={loading} className="w-full py-5 bg-[#F97316] hover:bg-[#0F172A] text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.3em] transition-all shadow-xl shadow-[#F97316]/30 flex items-center justify-center gap-3 active:scale-95">
                   {loading ? <Loader2 size={18} className="animate-spin" /> : <CreditCard size={18} />}
                   {loading ? 'Processing...' : 'Pay Now'}
                 </button>
@@ -446,21 +450,21 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                      <div className="w-24 h-24 bg-green-50 rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 border border-green-100 shadow-xl shadow-green-500/10">
                         <CheckCircle2 size={48} className="text-green-500" />
                      </div>
-                     <h3 className="text-4xl font-black text-[#0A2540] tracking-tighter uppercase leading-none mb-4">Booking Confirmed</h3>
+                     <h3 className="text-4xl font-black text-[#0F172A] tracking-tighter uppercase leading-none mb-4">Booking Confirmed</h3>
                      <p className="text-sm font-medium text-gray-400 max-w-sm mx-auto mb-10">Your booking is successful! You can view your details in your profile.</p>
                      
                      <div className="grid grid-cols-2 gap-4 mb-10">
                         <div className="p-4 bg-gray-50 rounded-3xl text-left border border-gray-100">
                            <p className="text-xs font-black text-gray-400 uppercase mb-1">Reference Number</p>
-                           <p className="text-xs font-black text-[#0A2540]">#NOX-{String(bookingId).slice(-6).toUpperCase()}</p>
+                           <p className="text-xs font-black text-[#0F172A]">#NOX-{String(bookingId).slice(-6).toUpperCase()}</p>
                         </div>
                         <div className="p-4 bg-gray-50 rounded-3xl text-left border border-gray-100">
                            <p className="text-xs font-black text-gray-400 uppercase mb-1">Guests</p>
-                           <p className="text-xs font-black text-[#0A2540]">{selectedGuestIds.length} Companion(s)</p>
+                           <p className="text-xs font-black text-[#0F172A]">{selectedGuestIds.length} Companion(s)</p>
                         </div>
                      </div>
 
-                     <button onClick={onClose} className="w-full py-5 bg-[#0A2540] hover:bg-[#635BFF] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all">
+                     <button onClick={onClose} className="w-full py-5 bg-[#0F172A] hover:bg-[#F97316] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all">
                         Go Back
                      </button>
                   </motion.div>
@@ -473,7 +477,7 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                      </div>
                      
                      <div>
-                        <h3 className="text-3xl font-black text-[#0A2540] tracking-tighter uppercase leading-none mb-2">Verifying Payment...</h3>
+                        <h3 className="text-3xl font-black text-[#0F172A] tracking-tighter uppercase leading-none mb-2">Verifying Payment...</h3>
                         <p className="text-sm font-medium text-gray-400 max-w-sm mx-auto">Waiting for payment confirmation. This may take up to 60 seconds.</p>
                      </div>
 
@@ -493,7 +497,7 @@ const BookingDialog = ({ hotel, room, onClose }) => {
                         >
                            <RefreshCcw size={14} className={isPolling ? 'animate-spin' : ''} /> Refresh Status
                         </button>
-                        <button onClick={onClose} className="w-full py-4 text-gray-400 hover:text-[#0A2540] font-black text-xs uppercase tracking-widest">
+                        <button onClick={onClose} className="w-full py-4 text-gray-400 hover:text-[#0F172A] font-black text-xs uppercase tracking-widest">
                            Check My Bookings Later
                         </button>
                      </div>

@@ -10,6 +10,10 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { normalizeCityName } from '../../utils/stringUtils';
 
+const InputLabel = ({ title }) => (
+  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{title}</p>
+);
+
 // ── Static Data ────────────────────────────────────────────────────────────────
 
 const DESTINATIONS = [
@@ -17,31 +21,31 @@ const DESTINATIONS = [
     city: 'Mumbai',
     tagline: 'City of Dreams',
     count: '1,200+ hotels',
-    gradient: 'from-[#0A2540] to-[#1a4270]',
-    accent: '#F6A100',
+    gradient: 'from-[#0F172A] to-[#1a4270]',
+    accent: '#F97316',
     image: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=600&q=80',
   },
   {
     city: 'Goa',
     tagline: 'Sun, Sea & Serenity',
     count: '640+ hotels',
-    gradient: 'from-[#0d7a5a] to-[#0A2540]',
-    accent: '#F6A100',
+    gradient: 'from-[#0d7a5a] to-[#0F172A]',
+    accent: '#F97316',
     image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80',
   },
   {
     city: 'Delhi',
     tagline: 'Where History Lives',
     count: '980+ hotels',
-    gradient: 'from-[#4a1259] to-[#0A2540]',
-    accent: '#635BFF',
+    gradient: 'from-[#4a1259] to-[#0F172A]',
+    accent: '#0284C7',
     image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80',
   },
   {
     city: 'Bangalore',
     tagline: 'Silicon Valley of India',
     count: '820+ hotels',
-    gradient: 'from-[#1a3a1a] to-[#0A2540]',
+    gradient: 'from-[#1a3a1a] to-[#0F172A]',
     accent: '#22c55e',
     image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80',
   },
@@ -49,7 +53,7 @@ const DESTINATIONS = [
     city: 'Jaipur',
     tagline: 'The Pink City',
     count: '450+ hotels',
-    gradient: 'from-[#7c1d2a] to-[#0A2540]',
+    gradient: 'from-[#7c1d2a] to-[#0F172A]',
     accent: '#f87171',
     image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80',
   },
@@ -57,7 +61,7 @@ const DESTINATIONS = [
     city: 'Udaipur',
     tagline: 'City of Lakes',
     count: '320+ hotels',
-    gradient: 'from-[#4a3f35] to-[#0A2540]',
+    gradient: 'from-[#4a3f35] to-[#0F172A]',
     accent: '#d97706',
     image: 'https://images.unsplash.com/photo-1615836245337-f839dffdbac3?w=600&q=80',
   },
@@ -65,7 +69,7 @@ const DESTINATIONS = [
     city: 'Munnar',
     tagline: 'God\'s Own Country',
     count: '210+ hotels',
-    gradient: 'from-[#1b4332] to-[#0A2540]',
+    gradient: 'from-[#1b4332] to-[#0F172A]',
     accent: '#10b981',
     image: 'https://images.unsplash.com/photo-1593693397690-362bb9a11566?w=600&q=80',
   },
@@ -73,7 +77,7 @@ const DESTINATIONS = [
     city: 'Shimla',
     tagline: 'Queen of Hills',
     count: '290+ hotels',
-    gradient: 'from-[#1f2937] to-[#0A2540]',
+    gradient: 'from-[#1f2937] to-[#0F172A]',
     accent: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1525598912003-663126343e1f?w=600&q=80',
   },
@@ -84,13 +88,13 @@ const WHY_US = [
     icon: <Shield size={24} />,
     title: 'Verified Properties',
     desc: 'Every listing is manually reviewed by our team before going live.',
-    color: 'bg-[#635BFF]/10 text-[#635BFF]',
+    color: 'bg-[#0284C7]/10 text-[#0284C7]',
   },
   {
     icon: <Zap size={24} />,
     title: 'Instant Confirmation',
     desc: 'Get booking confirmation in seconds with real-time availability.',
-    color: 'bg-[#F6A100]/10 text-[#F6A100]',
+    color: 'bg-[#F97316]/10 text-[#F97316]',
   },
   {
     icon: <Headphones size={24} />,
@@ -120,9 +124,9 @@ const AMENITY_ICONS = {
 };
 
 const BUILDING_TYPES = [
-  { width: 55, height: 170, bg: '#635BFF' },
-  { width: 75, height: 130, bg: '#F6A100' },
-  { width: 45, height: 210, bg: '#0A2540' },
+  { width: 55, height: 170, bg: '#0284C7' },
+  { width: 75, height: 130, bg: '#F97316' },
+  { width: 45, height: 210, bg: '#0F172A' },
   { width: 90, height: 110, bg: '#ffffff' },
   { width: 60, height: 190, bg: '#22c55e' },
 ];
@@ -131,9 +135,9 @@ const BUILDING_TYPES = [
 const FloatingOrb = ({ delay, size, x, y, color }) => (
   <motion.div
     className="absolute rounded-full pointer-events-none"
-    style={{ width: size, height: size, left: x, top: y, background: color, filter: 'blur(40px)', opacity: 0.25 }}
-    animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
-    transition={{ duration: 6 + delay, repeat: Infinity, ease: 'easeInOut', delay }}
+    style={{ width: size, height: size, left: x, top: y, background: color, filter: 'blur(50px)', opacity: 0.35 }}
+    animate={{ y: [0, -20, 0], scale: [1, 1.3, 1] }}
+    transition={{ duration: 3 + delay, repeat: Infinity, ease: 'easeInOut', delay }}
   />
 );
 
@@ -163,7 +167,7 @@ const DestCard = ({ dest, onClick, index }) => (
     
     <div className="absolute inset-x-0 bottom-0 p-8 sm:p-10 flex flex-col items-start gap-4">
       <div className="flex items-center gap-2">
-        <span className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-black tracking-widest text-[#F6A100] uppercase border border-white/20">
+        <span className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-black tracking-widest text-[#F97316] uppercase border border-white/20">
           {dest.count}
         </span>
         <div className="flex items-center text-amber-400">
@@ -189,9 +193,16 @@ const HomePage = () => {
   const [floorY, setFloorY] = useState(0);
   const [activeTab, setActiveTab] = useState('hotels');
 
+  useEffect(() => {
+    const tabs = ['hotels', 'resorts', 'villas'];
+    const interval = setInterval(() => {
+      setActiveTab(current => tabs[(tabs.indexOf(current) + 1) % tabs.length]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const { scrollYProgress } = useScroll({ target: heroRef });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '-15%']);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   useEffect(() => {
     const calc = () => setFloorY(window.innerHeight * 0.84);
@@ -241,32 +252,30 @@ const HomePage = () => {
 
   const today = new Date().toISOString().split('T')[0];
 
-  const InputLabel = ({ title }) => (
-    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{title}</p>
-  );
-
   return (
     <div className="w-full bg-[#F6F9FC]">
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative w-full min-h-[900px] py-32 flex flex-col items-center justify-center overflow-hidden bg-[#0A2540]"
+        className="relative w-full min-h-[900px] py-32 flex flex-col items-center justify-center overflow-hidden bg-[#0F172A]"
         onClick={handleHeroClick}
       >
         {/* Parallax bg */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 -top-20 h-[110%]">
           {/* Radial glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,91,255,0.35),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(249,115,22,0.15),rgba(2,132,199,0.3),transparent)]" />
           {/* Grid lines */}
           <div className="absolute inset-0 opacity-[0.035]"
             style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
         </motion.div>
 
         {/* Floating orbs */}
-        <FloatingOrb delay={0}   size={400} x="60%" y="10%"  color="radial-gradient(circle,#635BFF,transparent)" />
-        <FloatingOrb delay={2}   size={300} x="10%" y="40%"  color="radial-gradient(circle,#F6A100,transparent)" />
+        <FloatingOrb delay={0}   size={400} x="60%" y="10%"  color="radial-gradient(circle,#0284C7,transparent)" />
+        <FloatingOrb delay={2}   size={300} x="10%" y="40%"  color="radial-gradient(circle,#F97316,transparent)" />
         <FloatingOrb delay={4}   size={250} x="75%" y="60%"  color="radial-gradient(circle,#22c55e,transparent)" />
+        <FloatingOrb delay={1.5} size={900} x="10%" y="0%"  color="radial-gradient(circle,rgba(236,72,153,0.8),transparent)" />
+        <FloatingOrb delay={3} size={700} x="40%" y="30%"  color="radial-gradient(circle,rgba(168,85,247,0.6),transparent)" />
 
         {/* Horizon line */}
         <div className="absolute left-0 right-0 h-px bg-white/10 pointer-events-none" style={{ top: floorY }} />
@@ -292,7 +301,6 @@ const HomePage = () => {
 
         {/* Hero Content */}
         <motion.div 
-          style={{ opacity: heroOpacity }} 
           className="relative z-30 w-full px-4 flex flex-col items-center" 
           id="search-box" 
           onClick={e => e.stopPropagation()}
@@ -305,32 +313,51 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white/80 text-xs font-semibold mb-8"
           >
-            <TrendingUp size={12} className="text-[#F6A100]" />
+            <TrendingUp size={12} className="text-[#F97316]" />
             <span>Over 12,000 verified hotels across India</span>
           </motion.div>
 
           {/* Headline */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-center mb-4 flex flex-wrap justify-center font-display font-extrabold text-white tracking-tight leading-[1.05]"
+            animate={{ 
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+            }}
+            transition={{ 
+              backgroundPosition: { duration: 8, ease: 'linear', repeat: Infinity }
+            }}
+            className="text-center mb-4 flex flex-wrap justify-center font-display font-extrabold tracking-tight leading-[1.05] text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white"
+            style={{ 
+              backgroundSize: '200% auto',
+              backgroundImage: role === 'HOTEL_MANAGER' 
+                ? 'linear-gradient(to right, #ffffff, #e2e8f0, #ffffff)' 
+                : 'linear-gradient(to right, #ffffff, #0284C7, #F97316, #ffffff)'
+            }}
           >
-            {(role === 'HOTEL_MANAGER' ? ['Admin', 'Hub.', 'Simplified.'] : ['Find', 'your', 'perfect', 'stay.']).map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.3 + i * 0.15,
-                  duration: 0.6,
-                  type: 'spring', stiffness: 120
-                }}
-                className={`inline-block mr-3 md:mr-5 text-5xl md:text-7xl lg:text-8xl ${word === 'perfect' || word === 'Hub.' ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#635BFF] to-[#F6A100]' : ''}`}
-              >
-                {word}
-              </motion.span>
-            ))}
+            {role === 'HOTEL_MANAGER' ? (
+              ['Admin', 'Hub.', 'Simplified.'].map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.15, duration: 0.6, type: 'spring', stiffness: 120 }}
+                  className={`inline-block mr-3 md:mr-5 text-5xl md:text-7xl lg:text-8xl`}
+                >
+                  {word}
+                </motion.span>
+              ))
+            ) : (
+              ['Find', 'your', 'perfect', 'stay.'].map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + i * 0.1, duration: 0.6, type: 'spring', stiffness: 120 }}
+                  className={`inline-block mr-3 md:mr-5 text-5xl md:text-7xl lg:text-8xl ${word === 'perfect' ? 'font-black' : ''}`}
+                >
+                  {word}
+                </motion.span>
+              ))
+            )}
           </motion.div>
 
           {role !== 'HOTEL_MANAGER' && (
@@ -338,9 +365,9 @@ const HomePage = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-white/50 text-base md:text-lg font-light mb-10 text-center"
+              className="text-white/80 text-base md:text-lg font-medium mb-10 text-center"
             >
-              Click anywhere in the sky to build your dream city ✦
+              Discover verified hotels, exclusive resorts, and luxury villas for your next getaway.
             </motion.p>
           )}
 
@@ -349,19 +376,26 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-1 mb-8 gap-1"
+              className="flex bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-1 mb-8 gap-1 relative"
             >
               {['hotels', 'resorts', 'villas'].map(tab => (
                 <button
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-2 rounded-lg text-sm font-semibold capitalize transition-all ${
+                  className={`relative px-5 py-2 rounded-lg text-sm font-semibold capitalize transition-colors z-10 ${
                     activeTab === tab
-                      ? 'bg-white text-[#0A2540] shadow-md'
+                      ? 'text-[#0F172A]'
                       : 'text-white/70 hover:text-white'
                   }`}
                 >
+                  {activeTab === tab && (
+                    <motion.div
+                      layoutId="activeTabBackground"
+                      className="absolute inset-0 bg-white rounded-lg shadow-md -z-10"
+                      transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                    />
+                  )}
                   {tab}
                 </button>
               ))}
@@ -377,7 +411,7 @@ const HomePage = () => {
               className="w-full max-w-2xl px-4"
             >
               <div className="bg-white/10 backdrop-blur-3xl border border-white/20 rounded-[3rem] p-8 md:p-12 shadow-[0_48px_100px_rgba(0,0,0,0.5)] text-center space-y-8">
-                <div className="w-20 h-20 bg-[#635BFF] rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-[#635BFF]/40">
+                <div className="w-20 h-20 bg-[#0284C7] rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-[#0284C7]/40">
                   <ShieldCheck size={40} className="text-white" />
                 </div>
                 <div className="space-y-2">
@@ -386,7 +420,7 @@ const HomePage = () => {
                 </div>
                 <button 
                   onClick={() => navigate('/admin/hotels')}
-                  className="w-full py-5 bg-[#635BFF] hover:bg-[#7c75ff] text-white rounded-[1.5rem] font-black text-sm uppercase tracking-[0.3em] transition-all shadow-xl shadow-[#635BFF]/20 active:scale-95 group flex items-center justify-center gap-4"
+                  className="w-full py-5 bg-[#0284C7] hover:bg-[#7c75ff] text-white rounded-[1.5rem] font-black text-sm uppercase tracking-[0.3em] transition-all shadow-xl shadow-[#0284C7]/20 active:scale-95 group flex items-center justify-center gap-4"
                 >
                   Enter Manager Portal <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -407,7 +441,7 @@ const HomePage = () => {
                 <div className="flex-[2] relative group flex flex-col justify-center px-6 py-4 hover:bg-gray-50 transition-colors cursor-text" onClick={() => document.getElementById('city-input').focus()}>
                   <InputLabel title="Where are you going?" />
                   <div className="flex items-center gap-3">
-                    <MapPin className="text-[#635BFF]" size={20} />
+                    <MapPin className="text-[#0284C7]" size={20} />
                     <input
                       id="city-input"
                       value={city}
@@ -415,7 +449,7 @@ const HomePage = () => {
                       type="text"
                       required
                       placeholder="Search destinations"
-                      className="w-full text-lg font-bold text-[#0A2540] outline-none placeholder-gray-300 bg-transparent"
+                      className="w-full text-lg font-bold text-[#0F172A] outline-none placeholder-gray-300 bg-transparent"
                     />
                   </div>
                 </div>
@@ -427,14 +461,14 @@ const HomePage = () => {
                 >
                   <InputLabel title="Check-in" />
                   <div className="flex items-center gap-2">
-                    <Calendar className="text-gray-400 group-hover:text-[#635BFF] transition-colors" size={18} />
+                    <Calendar className="text-gray-400 group-hover:text-[#0284C7] transition-colors" size={18} />
                     <input
                       id="in-input"
                       value={checkIn}
                       onChange={e => setCheckIn(e.target.value)}
                       type="date"
                       min={today}
-                      className="w-full text-sm font-bold text-[#0A2540] outline-none bg-transparent cursor-pointer"
+                      className="w-full text-sm font-bold text-[#0F172A] outline-none bg-transparent cursor-pointer"
                     />
                   </div>
                 </div>
@@ -446,14 +480,14 @@ const HomePage = () => {
                 >
                   <InputLabel title="Check-out" />
                   <div className="flex items-center gap-2">
-                    <Calendar className="text-gray-400 group-hover:text-[#635BFF] transition-colors" size={18} />
+                    <Calendar className="text-gray-400 group-hover:text-[#0284C7] transition-colors" size={18} />
                     <input
                       id="out-input"
                       value={checkOut}
                       onChange={e => setCheckOut(e.target.value)}
                       type="date"
                       min={checkIn || today}
-                      className="w-full text-sm font-bold text-[#0A2540] outline-none bg-transparent cursor-pointer"
+                      className="w-full text-sm font-bold text-[#0F172A] outline-none bg-transparent cursor-pointer"
                     />
                   </div>
                 </div>
@@ -464,12 +498,12 @@ const HomePage = () => {
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
                       <button type="button" onClick={() => setRooms(r => Math.max(1, r - 1))}
-                        className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-white hover:border-[#635BFF] hover:text-[#635BFF] transition-all font-bold">
+                        className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-white hover:border-[#0284C7] hover:text-[#0284C7] transition-all font-bold">
                         −
                       </button>
-                      <span className="text-sm font-extrabold text-[#0A2540] min-w-[12px] text-center">{rooms}</span>
+                      <span className="text-sm font-extrabold text-[#0F172A] min-w-[12px] text-center">{rooms}</span>
                       <button type="button" onClick={() => setRooms(r => r + 1)}
-                        className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-white hover:border-[#635BFF] hover:text-[#635BFF] transition-all font-bold">
+                        className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-white hover:border-[#0284C7] hover:text-[#0284C7] transition-all font-bold">
                         +
                       </button>
                     </div>
@@ -485,11 +519,11 @@ const HomePage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 animate={{ 
-                  boxShadow: ["0 20px 50px rgba(99,91,255,0.2)", "0 20px 70px rgba(99,91,255,0.4)", "0 20px 50px rgba(99,91,255,0.2)"]
+                  boxShadow: ["0 20px 50px rgba(249,115,22,0.3)", "0 20px 70px rgba(249,115,22,0.5)", "0 20px 50px rgba(249,115,22,0.3)"]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
                 type="submit"
-                className="group relative px-28 py-8 bg-[#635BFF] hover:bg-[#0A2540] transition-all text-white font-black text-2xl flex items-center justify-center gap-6 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden"
+                className="group relative px-28 py-8 bg-[#F97316] hover:bg-[#ea580c] transition-all text-white font-black text-2xl flex items-center justify-center gap-6 rounded-[3rem] shadow-[0_20px_50px_rgba(249,115,22,0.4)] overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 <Search size={32} className="group-hover:rotate-12 transition-transform" />
@@ -518,7 +552,7 @@ const HomePage = () => {
         <section className="bg-white py-24 border-b border-gray-100">
            <div className="max-w-7xl mx-auto px-4">
               <div className="text-center mb-16 space-y-4">
-                 <h2 className="text-3xl font-black text-[#0A2540] tracking-tighter uppercase">Market Preview</h2>
+                 <h2 className="text-3xl font-black text-[#0F172A] tracking-tighter uppercase">Market Preview</h2>
                  <p className="text-gray-400 text-sm font-medium">Verify your listings and preview the guest experience across the platform.</p>
               </div>
               
@@ -530,13 +564,13 @@ const HomePage = () => {
                   <div className="flex-[2] relative group flex flex-col justify-center px-8 py-5 hover:bg-gray-50 transition-colors">
                     <InputLabel title="Verify Location" />
                     <div className="flex items-center gap-3">
-                      <MapPin className="text-[#635BFF]" size={20} />
+                      <MapPin className="text-[#0284C7]" size={20} />
                       <input
                         type="text"
                         placeholder="Search city..."
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
-                        className="bg-transparent text-sm font-bold text-[#0A2540] placeholder:text-gray-300 outline-none w-full"
+                        className="bg-transparent text-sm font-bold text-[#0F172A] placeholder:text-gray-300 outline-none w-full"
                       />
                     </div>
                   </div>
@@ -544,12 +578,12 @@ const HomePage = () => {
                   <div className="flex-1 px-8 py-5 hover:bg-gray-50 transition-colors">
                     <InputLabel title="Date In" />
                     <div className="flex items-center gap-3">
-                      <Calendar className="text-[#635BFF]" size={18} />
+                      <Calendar className="text-[#0284C7]" size={18} />
                       <input
                         type="date"
                         value={checkIn}
                         onChange={(e) => setCheckIn(e.target.value)}
-                        className="bg-transparent text-sm font-bold text-[#0A2540] outline-none w-full"
+                        className="bg-transparent text-sm font-bold text-[#0F172A] outline-none w-full"
                       />
                     </div>
                   </div>
@@ -557,12 +591,12 @@ const HomePage = () => {
                   <div className="flex-1 px-8 py-5 hover:bg-gray-50 transition-colors">
                     <InputLabel title="Date Out" />
                     <div className="flex items-center gap-3">
-                      <Calendar className="text-[#635BFF]" size={18} />
+                      <Calendar className="text-[#0284C7]" size={18} />
                       <input
                         type="date"
                         value={checkOut}
                         onChange={(e) => setCheckOut(e.target.value)}
-                        className="bg-transparent text-sm font-bold text-[#0A2540] outline-none w-full"
+                        className="bg-transparent text-sm font-bold text-[#0F172A] outline-none w-full"
                       />
                     </div>
                   </div>
@@ -570,7 +604,7 @@ const HomePage = () => {
                   <div className="p-4 flex items-center">
                     <button 
                       type="submit"
-                      className="w-full lg:w-auto px-10 py-4 bg-[#0A2540] hover:bg-[#635BFF] text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all"
+                      className="w-full lg:w-auto px-10 py-4 bg-[#0F172A] hover:bg-[#0284C7] text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all"
                     >
                       Run Preview
                     </button>
@@ -583,7 +617,7 @@ const HomePage = () => {
 
       {/* ── STATS STRIP ──────────────────────────────────────────────────── */}
       {role !== 'HOTEL_MANAGER' && (
-        <section className="bg-[#0A2540] py-10 border-t border-white/5">
+        <section className="bg-[#0F172A] py-10 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map((stat, i) => (
@@ -595,7 +629,7 @@ const HomePage = () => {
                 transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#F6A100] mb-3">
+                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#F97316] mb-3">
                   {stat.icon}
                 </div>
                 <p className="text-3xl font-extrabold text-white tracking-tight">{stat.value}</p>
@@ -616,7 +650,7 @@ const HomePage = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-bold text-[#635BFF] uppercase tracking-widest mb-2"
+              className="text-xs font-bold text-[#0284C7] uppercase tracking-widest mb-2"
             >
               Explore
             </motion.p>
@@ -624,7 +658,7 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-[#0A2540]"
+              className="text-3xl md:text-4xl font-bold text-[#0F172A]"
             >
               Trending Destinations
             </motion.h2>
@@ -667,7 +701,7 @@ const HomePage = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="text-xs font-bold text-[#635BFF] uppercase tracking-widest mb-2"
+                className="text-xs font-bold text-[#0284C7] uppercase tracking-widest mb-2"
               >
                 The Nox Difference
               </motion.p>
@@ -675,7 +709,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold text-[#0A2540]"
+                className="text-3xl md:text-4xl font-bold text-[#0F172A]"
               >
                 Built for discerning travelers
               </motion.h2>
@@ -695,7 +729,7 @@ const HomePage = () => {
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${item.color}`}>
                     {item.icon}
                   </div>
-                  <h3 className="font-bold text-[#0A2540] mb-2">{item.title}</h3>
+                  <h3 className="font-bold text-[#0F172A] mb-2">{item.title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                   <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
                     <ArrowRight size={16} className="text-gray-300" />
@@ -713,16 +747,16 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0A2540] via-[#1a3556] to-[#0A2540] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0F172A] via-[#1a3556] to-[#0F172A] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8"
         >
           {/* BG decoration */}
           <div className="absolute inset-0 opacity-10"
-            style={{ backgroundImage: 'radial-gradient(circle at 80% 50%, #635BFF 0%, transparent 60%)' }} />
+            style={{ backgroundImage: 'radial-gradient(circle at 80% 50%, #0284C7 0%, transparent 60%)' }} />
           <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-5"
             style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)', backgroundSize: '20px 20px' }} />
 
           <div className="relative z-10">
-            <p className="text-[#F6A100] font-bold text-xs uppercase tracking-widest mb-3">For Hotel Managers</p>
+            <p className="text-[#F97316] font-bold text-xs uppercase tracking-widest mb-3">For Hotel Managers</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
               List your property.<br />Start earning today.
             </h2>
@@ -732,7 +766,7 @@ const HomePage = () => {
             <div className="relative z-10 flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => navigate('/login')}
-                className="px-7 py-3.5 bg-[#635BFF] hover:bg-[#7c75ff] text-white font-bold rounded-xl transition-all shadow-lg shadow-[#635BFF]/30 text-sm whitespace-nowrap"
+                className="px-7 py-3.5 bg-[#0284C7] hover:bg-[#7c75ff] text-white font-bold rounded-xl transition-all shadow-lg shadow-[#0284C7]/30 text-sm whitespace-nowrap"
               >
                 List Your Hotel
               </button>
@@ -750,13 +784,13 @@ const HomePage = () => {
       {/* ── THE NOX JOURNEY (REPLACED AMENITIES) ─────────────────────────── */}
       {role !== 'HOTEL_MANAGER' && (
         <section className="bg-white py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#635BFF]/5 blur-[120px] rounded-full -mr-20 -mt-20" />
+        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#0284C7]/5 blur-[120px] rounded-full -mr-20 -mt-20" />
         
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <motion.p
               viewport={{ once: true }}
-              className="text-xs font-black text-[#635BFF] uppercase tracking-[0.4em] mb-4"
+              className="text-xs font-black text-[#0284C7] uppercase tracking-[0.4em] mb-4"
             >
               How it Works
             </motion.p>
@@ -764,7 +798,7 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tighter uppercase"
+              className="text-4xl md:text-5xl font-black text-[#0F172A] tracking-tighter uppercase"
             >
               The Nox Journey
             </motion.h2>
@@ -779,13 +813,13 @@ const HomePage = () => {
                 step: '01', 
                 title: 'Curated Discovery', 
                 desc: 'Explore a manually verified collection of the finest hotels and villas across the subcontinent.',
-                icon: <Search className="text-[#635BFF]" size={28} />
+                icon: <Search className="text-[#0284C7]" size={28} />
               },
               { 
                 step: '02', 
                 title: 'Seamless Reserve', 
                 desc: 'Instant confirmation with dynamic pricing. No hidden fees, no wait times, just pure efficiency.',
-                icon: <Zap className="text-[#F6A100]" size={28} />
+                icon: <Zap className="text-[#F97316]" size={28} />
               },
               { 
                 step: '03', 
@@ -803,14 +837,14 @@ const HomePage = () => {
                 className="flex flex-col items-center text-center group"
               >
                 <div className="relative mb-8">
-                  <div className="w-20 h-20 rounded-[2.5rem] bg-white border border-gray-100 shadow-xl flex items-center justify-center group-hover:scale-110 group-hover:border-[#635BFF]/30 transition-all duration-500">
+                  <div className="w-20 h-20 rounded-[2.5rem] bg-white border border-gray-100 shadow-xl flex items-center justify-center group-hover:scale-110 group-hover:border-[#0284C7]/30 transition-all duration-500">
                     {item.icon}
                   </div>
-                  <span className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-[#0A2540] text-white text-[10px] font-black flex items-center justify-center shadow-lg">
+                  <span className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-[#0F172A] text-white text-[10px] font-black flex items-center justify-center shadow-lg">
                     {item.step}
                   </span>
                 </div>
-                <h4 className="text-xl font-black text-[#0A2540] uppercase tracking-tight mb-4">{item.title}</h4>
+                <h4 className="text-xl font-black text-[#0F172A] uppercase tracking-tight mb-4">{item.title}</h4>
                 <p className="text-sm text-gray-400 font-medium leading-relaxed max-w-[280px]">
                   {item.desc}
                 </p>
@@ -830,7 +864,7 @@ const HomePage = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0A2540] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">
             Your next adventure awaits.
           </h2>
           <p className="text-gray-500 mb-8 max-w-md mx-auto">
@@ -838,7 +872,7 @@ const HomePage = () => {
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#0A2540] hover:bg-[#635BFF] text-white font-bold rounded-2xl text-base transition-all shadow-xl hover:shadow-[#635BFF]/30"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#0F172A] hover:bg-[#0284C7] text-white font-bold rounded-2xl text-base transition-all shadow-xl hover:shadow-[#0284C7]/30"
           >
             <Search size={18} />
             Start Exploring

@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const inputClass = 'w-full bg-white border border-gray-200 rounded-2xl px-4 py-3 text-sm font-bold text-[#0A2540] outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all placeholder:text-gray-300';
+const inputClass = 'w-full bg-white border border-gray-200 rounded-2xl px-4 py-3 text-sm font-bold text-[#0F172A] outline-none focus:border-[#0284C7] focus:ring-4 focus:ring-[#0284C7]/10 transition-all placeholder:text-gray-300';
 const labelClass = 'block text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-1';
 
 const ProfilePage = () => {
@@ -73,14 +73,14 @@ const ProfilePage = () => {
         <div className="flex items-center justify-between mb-8">
           <button 
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-xs font-black text-gray-400 hover:text-[#0A2540] uppercase tracking-widest transition-all group"
+            className="flex items-center gap-2 text-xs font-black text-gray-400 hover:text-[#0F172A] uppercase tracking-widest transition-all group"
           >
             <div className="p-2 bg-white rounded-xl shadow-sm group-hover:bg-gray-50 transition-colors">
               <ArrowLeft size={16} />
             </div>
             Back to Home
           </button>
-          <span className="px-3 py-1 bg-[#635BFF]/10 rounded-full text-xs font-black tracking-widest text-[#635BFF] uppercase">
+          <span className="px-3 py-1 bg-[#0284C7]/10 rounded-full text-xs font-black tracking-widest text-[#0284C7] uppercase">
             My Profile
           </span>
           <div className="w-24" /> {/* Spacer to center the label roughly */}
@@ -92,15 +92,15 @@ const ProfilePage = () => {
           className="bg-white rounded-[2.5rem] shadow-[0_32px_80px_rgba(0,0,0,0.06)] border border-gray-50 overflow-hidden"
         >
           {/* Header/Banner */}
-          <div className="h-32 bg-gradient-to-r from-[#0A2540] to-[#635BFF] relative">
+          <div className="h-32 bg-gradient-to-r from-[#0F172A] to-[#0284C7] relative">
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2">
               <div className="relative group">
                 <div className="w-24 h-24 rounded-[2rem] bg-white p-1.5 shadow-xl">
-                  <div className="w-full h-full rounded-[1.7rem] bg-gray-100 flex items-center justify-center text-4xl font-black text-[#635BFF]">
+                  <div className="w-full h-full rounded-[1.7rem] bg-gray-100 flex items-center justify-center text-4xl font-black text-[#0284C7]">
                     {user?.name?.[0]?.toUpperCase() || 'U'}
                   </div>
                 </div>
-                <button className="absolute bottom-0 right-0 p-2 bg-white rounded-xl shadow-lg border border-gray-100 text-gray-400 hover:text-[#0A2540] hover:scale-110 transition-all">
+                <button className="absolute bottom-0 right-0 p-2 bg-white rounded-xl shadow-lg border border-gray-100 text-gray-400 hover:text-[#0F172A] hover:scale-110 transition-all">
                   <Camera size={16} />
                 </button>
               </div>
@@ -109,7 +109,7 @@ const ProfilePage = () => {
 
           <div className="pt-16 pb-10 px-8">
             <div className="text-center mb-10">
-              <h1 className="text-2xl font-black text-[#0A2540] tracking-tighter capitalize">{user?.name}</h1>
+              <h1 className="text-2xl font-black text-[#0F172A] tracking-tighter capitalize">{user?.name}</h1>
               <p className="text-xs font-bold text-gray-400 mt-1 flex items-center justify-center gap-1.5">
                 <Mail size={12} /> {user?.email}
               </p>
@@ -176,11 +176,11 @@ const ProfilePage = () => {
                 </div>
 
                 <div className="bg-gray-50 rounded-2xl p-4 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#635BFF]/10 flex items-center justify-center text-[#635BFF]">
+                  <div className="w-10 h-10 rounded-xl bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7]">
                     <ShieldCheck size={20} />
                   </div>
                   <div>
-                    <p className="text-xs font-black text-[#0A2540] uppercase tracking-wider">Your Role</p>
+                    <p className="text-xs font-black text-[#0F172A] uppercase tracking-wider">Your Role</p>
                     <p className="text-sm font-bold text-gray-500 capitalize">{role?.toLowerCase()?.replace('_', ' ')}</p>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ const ProfilePage = () => {
               <button
                 type="submit"
                 disabled={loading || !isDirty}
-                className="w-full flex items-center justify-center gap-2 bg-[#0A2540] hover:bg-[#635BFF] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl shadow-[#0A2540]/20 disabled:opacity-30 disabled:shadow-none active:scale-[0.98]"
+                className="w-full flex items-center justify-center gap-2 bg-[#0F172A] hover:bg-[#0284C7] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl shadow-[#0F172A]/20 disabled:opacity-30 disabled:shadow-none active:scale-[0.98]"
               >
                 {loading ? <Loader2 size={16} className="animate-spin" /> : <Pencil size={14} />}
                 {loading ? 'Saving Changes...' : 'Update Profile'}

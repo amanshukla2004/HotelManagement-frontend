@@ -10,7 +10,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 
-const inputClass = 'w-full bg-white border border-gray-100 rounded-2xl px-4 py-3 text-sm font-bold text-[#0A2540] outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all placeholder:text-gray-300';
+const inputClass = 'w-full bg-white border border-gray-100 rounded-2xl px-4 py-3 text-sm font-bold text-[#0F172A] outline-none focus:border-[#0284C7] focus:ring-4 focus:ring-[#0284C7]/10 transition-all placeholder:text-gray-300';
 const labelClass = 'block text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-1';
 
 const GuestFormModal = ({ onClose, onSave, initial }) => {
@@ -25,7 +25,7 @@ const GuestFormModal = ({ onClose, onSave, initial }) => {
   }, [initial, reset]);
 
   return (
-    <div className="fixed inset-0 bg-[#0A2540]/60 backdrop-blur-md z-[200] flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-[#0F172A]/60 backdrop-blur-md z-[200] flex items-center justify-center p-4">
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -33,12 +33,12 @@ const GuestFormModal = ({ onClose, onSave, initial }) => {
       >
         <div className="p-8 pb-4 flex items-center justify-between">
           <div>
-            <span className="text-xs font-black text-[#635BFF] uppercase tracking-widest bg-[#635BFF]/5 px-2 py-1 rounded-md mb-2 inline-block">
+            <span className="text-xs font-black text-[#0284C7] uppercase tracking-widest bg-[#0284C7]/5 px-2 py-1 rounded-md mb-2 inline-block">
               {initial ? 'Edit Details' : 'New Guest'}
             </span>
-            <h3 className="text-2xl font-black text-[#0A2540] tracking-tighter">{initial ? 'Modify Guest' : 'Add New Guest'}</h3>
+            <h3 className="text-2xl font-black text-[#0F172A] tracking-tighter">{initial ? 'Modify Guest' : 'Add New Guest'}</h3>
           </div>
-          <button onClick={onClose} className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#0A2540] transition-colors"><X size={20} /></button>
+          <button onClick={onClose} className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#0F172A] transition-colors"><X size={20} /></button>
         </div>
 
         <form onSubmit={handleSubmit(onSave)} className="p-8 space-y-6">
@@ -78,7 +78,7 @@ const GuestFormModal = ({ onClose, onSave, initial }) => {
             <button type="button" onClick={onClose} className="flex-1 py-4 text-xs font-black text-gray-400 uppercase tracking-widest hover:bg-gray-50 rounded-2xl transition">
               Cancel
             </button>
-            <button type="submit" className="flex-1 flex items-center justify-center gap-2 py-4 text-xs font-black text-white bg-[#0A2540] hover:bg-[#635BFF] rounded-2xl transition shadow-xl shadow-[#0A2540]/20 active:scale-95">
+            <button type="submit" className="flex-1 flex items-center justify-center gap-2 py-4 text-xs font-black text-white bg-[#0F172A] hover:bg-[#0284C7] rounded-2xl transition shadow-xl shadow-[#0F172A]/20 active:scale-95">
               <Check size={16} /> {initial ? 'Save Changes' : 'Save Guest'}
             </button>
           </div>
@@ -158,16 +158,16 @@ const SavedGuestsPage = () => {
           <div className="space-y-4">
             <button 
               onClick={() => navigate(-1)} 
-              className="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-widest hover:text-[#635BFF] transition-colors group"
+              className="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-widest hover:text-[#0284C7] transition-colors group"
             >
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
               Back to Dashboard
             </button>
             <div className="space-y-2">
-              <span className="px-3 py-1 bg-[#635BFF]/10 rounded-full text-xs font-black tracking-widest text-[#635BFF] uppercase">
+              <span className="px-3 py-1 bg-[#0284C7]/10 rounded-full text-xs font-black tracking-widest text-[#0284C7] uppercase">
                 My Account
               </span>
-              <h1 className="text-4xl font-black text-[#0A2540] tracking-tighter uppercase leading-none">Saved Guests</h1>
+              <h1 className="text-4xl font-black text-[#0F172A] tracking-tighter uppercase leading-none">Saved Guests</h1>
               <p className="text-sm font-medium text-gray-400">Manage your frequent travelers for faster booking.</p>
             </div>
           </div>
@@ -175,13 +175,13 @@ const SavedGuestsPage = () => {
             <button
               onClick={fetchGuests}
               disabled={loading}
-              className="p-3 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#635BFF] transition-all shadow-sm active:rotate-180"
+              className="p-3 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0284C7] transition-all shadow-sm active:rotate-180"
             >
               <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
             </button>
             <button
               onClick={() => { setEditGuest(null); setModalOpen(true); }}
-              className="flex items-center gap-3 bg-[#0A2540] text-white px-8 py-3.5 rounded-[1.25rem] font-black text-xs uppercase tracking-widest hover:bg-[#635BFF] transition-all shadow-xl shadow-[#0A2540]/10"
+              className="flex items-center gap-3 bg-[#0F172A] text-white px-8 py-3.5 rounded-[1.25rem] font-black text-xs uppercase tracking-widest hover:bg-[#0284C7] transition-all shadow-xl shadow-[#0F172A]/10"
             >
               <Plus size={16} /> {guests.length === 0 ? 'Add First Guest' : 'Add New Guest'}
             </button>
@@ -207,11 +207,11 @@ const SavedGuestsPage = () => {
         {!loading && guests.length === 0 && !error && (
           <div className="bg-white rounded-[3rem] border border-gray-100 p-20 text-center shadow-sm">
             <Users size={64} className="mx-auto text-gray-100 mb-8" />
-            <h3 className="text-2xl font-black text-[#0A2540] tracking-tighter mb-2">No Saved Guests</h3>
+            <h3 className="text-2xl font-black text-[#0F172A] tracking-tighter mb-2">No Saved Guests</h3>
             <p className="text-sm text-gray-400 font-medium mb-10">You haven't added any travelers to your list yet.</p>
             <button
               onClick={() => { setEditGuest(null); setModalOpen(true); }}
-              className="inline-flex items-center gap-3 bg-[#635BFF] text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#0A2540] transition-all"
+              className="inline-flex items-center gap-3 bg-[#0284C7] text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#0F172A] transition-all"
             >
               <Plus size={18} /> Add Your First Guest
             </button>
@@ -230,13 +230,13 @@ const SavedGuestsPage = () => {
                 className="bg-white rounded-[2.5rem] border border-gray-50 p-6 shadow-sm hover:shadow-2xl transition-all group flex flex-col"
               >
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 rounded-[1.5rem] bg-gradient-to-tr from-[#635BFF] to-[#0A2540] flex items-center justify-center text-2xl font-black text-white shadow-lg shadow-[#635BFF]/20">
+                  <div className="w-16 h-16 rounded-[1.5rem] bg-gradient-to-tr from-[#0284C7] to-[#0F172A] flex items-center justify-center text-2xl font-black text-white shadow-lg shadow-[#0284C7]/20">
                     {guest.name?.[0]?.toUpperCase() || '?'}
                   </div>
                   <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <button
                       onClick={() => { setEditGuest(guest); setModalOpen(true); }}
-                      className="w-10 h-10 rounded-xl bg-gray-50 text-gray-400 hover:text-[#635BFF] hover:bg-[#635BFF]/10 flex items-center justify-center transition-all"
+                      className="w-10 h-10 rounded-xl bg-gray-50 text-gray-400 hover:text-[#0284C7] hover:bg-[#0284C7]/10 flex items-center justify-center transition-all"
                     >
                       <Edit2 size={16} />
                     </button>
@@ -251,7 +251,7 @@ const SavedGuestsPage = () => {
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-black text-[#0A2540] tracking-tighter leading-tight mb-1">{guest.name}</h3>
+                  <h3 className="text-xl font-black text-[#0F172A] tracking-tighter leading-tight mb-1">{guest.name}</h3>
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-black text-gray-400 uppercase tracking-widest">{guest.gender}</span>
                     <div className="w-1 h-1 rounded-full bg-gray-200" />

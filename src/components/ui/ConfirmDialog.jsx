@@ -53,7 +53,7 @@ const ConfirmDialog = ({
                 <AlertTriangle size={22} className={isDangerous ? 'text-red-500' : 'text-amber-500'} />
               </div>
 
-              <h2 className="text-lg font-bold text-[#0A2540] mb-2">{title}</h2>
+              <h2 className="text-lg font-bold text-[#0F172A] mb-2">{title}</h2>
               <p className="text-sm text-gray-500 mb-6">{message}</p>
 
               <div className="flex space-x-3">
@@ -70,7 +70,7 @@ const ConfirmDialog = ({
                   className={`flex-1 py-2.5 text-sm font-semibold text-white rounded-lg transition-colors flex items-center justify-center ${
                     isDangerous
                       ? 'bg-red-500 hover:bg-red-600'
-                      : 'bg-[#635BFF] hover:bg-[#0A2540]'
+                      : 'bg-[#0284C7] hover:bg-[#0F172A]'
                   } ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
                   {isLoading ? (

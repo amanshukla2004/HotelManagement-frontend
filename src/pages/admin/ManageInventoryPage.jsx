@@ -122,13 +122,13 @@ const ManageInventoryPage = () => {
            <div className="space-y-4">
               <button 
                 onClick={() => navigate(`/admin/hotels/${hotelId}/rooms`)} 
-                className="flex items-center gap-3 text-sm font-black text-gray-400 uppercase tracking-widest hover:text-[#635BFF] transition-all group"
+                className="flex items-center gap-3 text-sm font-black text-gray-400 uppercase tracking-widest hover:text-[#0284C7] transition-all group"
               >
                 <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                 Return to Rooms
               </button>
               <div className="space-y-1">
-                 <h1 className="text-4xl font-black text-[#0A2540] tracking-tighter uppercase leading-none">{roomType}</h1>
+                 <h1 className="text-4xl font-black text-[#0F172A] tracking-tighter uppercase leading-none">{roomType}</h1>
                  <p className="text-gray-400 font-bold text-sm uppercase tracking-widest">{hotelName} • Inventory Control</p>
               </div>
            </div>
@@ -137,7 +137,7 @@ const ManageInventoryPage = () => {
               <button
                 onClick={fetchInventory}
                 disabled={isLoading || isSaving}
-                className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0A2540] transition-all shadow-sm"
+                className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#0F172A] transition-all shadow-sm"
               >
                 <RefreshCw size={20} className={isLoading ? 'animate-spin' : ''} />
               </button>
@@ -159,7 +159,7 @@ const ManageInventoryPage = () => {
                     <button
                       onClick={handleSave}
                       disabled={isSaving}
-                      className="flex items-center gap-3 bg-[#0A2540] text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#635BFF] transition-all shadow-xl shadow-[#0A2540]/20 active:scale-95 disabled:opacity-40"
+                      className="flex items-center gap-3 bg-[#0F172A] text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#0284C7] transition-all shadow-xl shadow-[#0F172A]/20 active:scale-95 disabled:opacity-40"
                     >
                       {isSaving ? <RefreshCw size={18} className="animate-spin" /> : <Save size={18} />}
                       Save Updates
@@ -171,12 +171,12 @@ const ManageInventoryPage = () => {
         </div>
 
         {/* ─── Bulk Operations ────────────────────────────────────────────────── */}
-        <div className="bg-[#0A2540] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl">
+        <div className="bg-[#0F172A] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl">
            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-10">
               <div className="space-y-1 shrink-0">
                  <div className="flex items-center gap-2">
-                    <Sparkles className="text-[#F6A100]" size={20} />
-                    <h3 className="text-xs font-black text-[#F6A100] uppercase tracking-widest">Bulk Management</h3>
+                    <Sparkles className="text-[#F97316]" size={20} />
+                    <h3 className="text-xs font-black text-[#F97316] uppercase tracking-widest">Bulk Management</h3>
                  </div>
                  <p className="text-white/40 text-xs">Update pricing and status for a range of dates.</p>
               </div>
@@ -185,19 +185,19 @@ const ManageInventoryPage = () => {
                  <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/30 uppercase">Date Range</label>
                     <div className="flex flex-col gap-1.5">
-                       <input type="date" value={bulkStrategy.startDate} onChange={e => setBulkStrategy({...bulkStrategy, startDate: e.target.value})} className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs font-black outline-none focus:border-[#635BFF]" />
-                       <input type="date" value={bulkStrategy.endDate} onChange={e => setBulkStrategy({...bulkStrategy, endDate: e.target.value})} className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs font-black outline-none focus:border-[#635BFF]" />
+                       <input type="date" value={bulkStrategy.startDate} onChange={e => setBulkStrategy({...bulkStrategy, startDate: e.target.value})} className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs font-black outline-none focus:border-[#0284C7]" />
+                       <input type="date" value={bulkStrategy.endDate} onChange={e => setBulkStrategy({...bulkStrategy, endDate: e.target.value})} className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs font-black outline-none focus:border-[#0284C7]" />
                     </div>
                  </div>
 
                  <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/30 uppercase">Price (₹)</label>
-                    <input type="number" value={bulkStrategy.price} onChange={e => setBulkStrategy({...bulkStrategy, price: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-3 text-sm font-black outline-none focus:border-[#635BFF]" placeholder="Set Price" />
+                    <input type="number" value={bulkStrategy.price} onChange={e => setBulkStrategy({...bulkStrategy, price: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-3 text-sm font-black outline-none focus:border-[#0284C7]" placeholder="Set Price" />
                  </div>
 
                  <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/30 uppercase">Surge Factor</label>
-                    <input type="number" step="0.1" value={bulkStrategy.surgeFactor} onChange={e => setBulkStrategy({...bulkStrategy, surgeFactor: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-3 text-sm font-black outline-none focus:border-[#635BFF]" placeholder="1.0" />
+                    <input type="number" step="0.1" value={bulkStrategy.surgeFactor} onChange={e => setBulkStrategy({...bulkStrategy, surgeFactor: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-3 text-sm font-black outline-none focus:border-[#0284C7]" placeholder="1.0" />
                  </div>
 
                  <div className="space-y-2">
@@ -207,7 +207,7 @@ const ManageInventoryPage = () => {
                     </button>
                  </div>
 
-                 <button onClick={applyBulkStrategy} disabled={isSaving} className="h-11 bg-[#635BFF] hover:bg-white hover:text-[#0A2540] text-white rounded-lg font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+                 <button onClick={applyBulkStrategy} disabled={isSaving} className="h-11 bg-[#0284C7] hover:bg-white hover:text-[#0F172A] text-white rounded-lg font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2">
                     <Maximize2 size={14} />
                     Apply Bulk
                  </button>
@@ -246,11 +246,11 @@ const ManageInventoryPage = () => {
                   const isPending = !!pendingChanges[item.id];
                   
                   return (
-                    <div key={item.id} className={`grid grid-cols-12 gap-8 px-10 py-8 items-center transition-all ${isPending ? 'bg-[#635BFF]/5' : 'hover:bg-gray-50/30'}`}>
+                    <div key={item.id} className={`grid grid-cols-12 gap-8 px-10 py-8 items-center transition-all ${isPending ? 'bg-[#0284C7]/5' : 'hover:bg-gray-50/30'}`}>
                        
                        {/* Date */}
                        <div className="col-span-3">
-                          <p className="text-2xl font-black text-[#0A2540] tracking-tighter uppercase leading-none">
+                          <p className="text-2xl font-black text-[#0F172A] tracking-tighter uppercase leading-none">
                              {new Date(item.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                           </p>
                           <p className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em] mt-2">Inventory Ref: {item.id}</p>
@@ -260,7 +260,7 @@ const ManageInventoryPage = () => {
                        <div className="col-span-4">
                           <div className="flex items-center justify-center gap-10">
                              <div className="flex flex-col items-center gap-2">
-                                <span className="text-xl font-black text-[#635BFF]">{item.bookedCount}</span>
+                                <span className="text-xl font-black text-[#0284C7]">{item.bookedCount}</span>
                                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Booked</span>
                              </div>
 
@@ -284,13 +284,13 @@ const ManageInventoryPage = () => {
                        <div className="col-span-3 flex flex-col items-center">
                           <div className="flex items-center gap-2">
                              <span className="text-gray-300 text-xl font-black">₹</span>
-                             <span className="text-3xl font-black text-[#0A2540] tracking-tighter">
+                             <span className="text-3xl font-black text-[#0F172A] tracking-tighter">
                                 {current.price?.toLocaleString()}
                              </span>
                           </div>
                           <div className="mt-1 flex items-center gap-2">
-                             <div className="px-2 py-0.5 bg-[#635BFF]/5 rounded border border-[#635BFF]/10">
-                                <span className="text-[10px] font-black text-[#635BFF] uppercase tracking-widest">Surge: {current.surgeFactor}x</span>
+                             <div className="px-2 py-0.5 bg-[#0284C7]/5 rounded border border-[#0284C7]/10">
+                                <span className="text-[10px] font-black text-[#0284C7] uppercase tracking-widest">Surge: {current.surgeFactor}x</span>
                              </div>
                           </div>
                        </div>
@@ -314,9 +314,9 @@ const ManageInventoryPage = () => {
         </div>
 
         {/* Footer */}
-        <div className="bg-[#0A2540] rounded-[2rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-xl">
+        <div className="bg-[#0F172A] rounded-[2rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-xl">
             <div className="relative z-10 flex items-center gap-6">
-               <div className="p-4 bg-white/5 border border-white/10 rounded-2xl text-[#635BFF]">
+               <div className="p-4 bg-white/5 border border-white/10 rounded-2xl text-[#0284C7]">
                    <ShieldCheck size={32} />
                </div>
                <div>
@@ -327,7 +327,7 @@ const ManageInventoryPage = () => {
 
             <div className="relative z-10">
                {hasChanges ? (
-                 <button onClick={handleSave} disabled={isSaving} className="px-10 py-5 bg-white text-[#0A2540] rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#635BFF] hover:text-white transition-all shadow-xl active:scale-95">
+                 <button onClick={handleSave} disabled={isSaving} className="px-10 py-5 bg-white text-[#0F172A] rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#0284C7] hover:text-white transition-all shadow-xl active:scale-95">
                    Confirm Updates
                  </button>
                ) : (

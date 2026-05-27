@@ -32,7 +32,7 @@ const SlideOver = ({ isOpen, onClose, title, subtitle, children, width = 'max-w-
             {/* Header */}
             <div className="px-6 py-5 border-b border-gray-100 flex items-start justify-between flex-shrink-0">
               <div>
-                <h2 className="text-xl font-bold text-[#0A2540]">{title}</h2>
+                <h2 className="text-xl font-bold text-[#0F172A]">{title}</h2>
                 {subtitle && <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>}
               </div>
               <button

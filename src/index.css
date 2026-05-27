@@ -1,48 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
 @theme {
-  /* OTA / Premium Palette */
-  --color-primary-blue: #0A2540; /* Stripe-like deep blue */
-  --color-bg-subtle: #F6F9FC;
+  /* Exploration Theme Palette */
+  --color-primary-blue: #0284C7; /* Bright Teal/Ocean Blue */
+  --color-bg-subtle: #F0F9FF; /* Very light sky blue */
   --color-surface: #FFFFFF;
-  --color-cta-primary: #635BFF; /* Premium purple-blue */
-  --color-cta-hover: #0A2540;
-  --color-accent-gold: #F6A100;
-  --color-text-dark: #32325D;
-  --color-text-muted: #8898AA;
+  --color-cta-primary: #F97316; /* Vibrant Orange for exploration vibe */
+  --color-cta-hover: #EA580C;
+  --color-accent-gold: #F97316;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #64748B;
 
-  --font-sans: 'Figtree', 'Inter', sans-serif;
-  --font-display: 'Figtree', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --shadow-premium: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
-  --shadow-float: 0 13px 27px -5px rgba(50,50,93,0.25), 0 8px 16px -8px rgba(0,0,0,0.3);
+  --shadow-premium: 0 20px 40px -10px rgba(2, 132, 199, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  --shadow-float: 0 10px 20px -5px rgba(2, 132, 199, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.05);
 }
 
 @layer base {
   :root {
-    --brand-dark: #0A2540;
-    --brand-primary: #635BFF;
+    --brand-dark: #0284C7;
+    --brand-primary: #F97316;
+  }
+
+  html {
+    font-size: 135%;
   }
 
   body {
-    @apply antialiased text-[#0A2540] bg-[#F8FAFC] overflow-x-hidden w-full;
+    @apply antialiased text-[#0F172A] bg-[#FAFAF9] overflow-x-hidden w-full;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Figtree', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     margin: 0;
     padding: 0;
   }
 
-  /* Custom Branded Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    display: none;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A2540;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -52,13 +55,13 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #635BFF;
+    background: #F97316;
   }
 
   /* Selection Style */
   ::selection {
-    background: rgba(99, 91, 255, 0.15);
-    color: #635BFF;
+    background: rgba(249, 115, 22, 0.2);
+    color: #F97316;
   }
 
   /* No Scrollbar Utility */

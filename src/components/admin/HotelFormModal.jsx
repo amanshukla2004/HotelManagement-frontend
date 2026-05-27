@@ -73,7 +73,7 @@ const HotelFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =
     onSubmit(cleaned);
   };
 
-  const inputClass = 'w-full bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3.5 text-xs font-bold text-[#0A2540] outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/5 transition-all placeholder:text-gray-300';
+  const inputClass = 'w-full bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3.5 text-xs font-bold text-[#0F172A] outline-none focus:border-[#0284C7] focus:ring-4 focus:ring-[#0284C7]/5 transition-all placeholder:text-gray-300';
   const labelClass = 'block text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-1';
 
   return (
@@ -89,10 +89,10 @@ const HotelFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =
         {/* ─── SECTION: IDENTITY ────────────────────────────────────────── */}
         <section className="space-y-6">
            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#635BFF]/10 flex items-center justify-center text-[#635BFF]">
+              <div className="w-8 h-8 rounded-lg bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7]">
                  <Building2 size={16} />
               </div>
-              <h3 className="text-xs font-black text-[#635BFF] uppercase tracking-[0.3em]">Basic Information</h3>
+              <h3 className="text-xs font-black text-[#0284C7] uppercase tracking-[0.3em]">Basic Information</h3>
            </div>
            
            <div className="grid grid-cols-1 gap-6">
@@ -120,10 +120,10 @@ const HotelFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =
         {/* ─── SECTION: CONTACT & GEOLOCATION ────────────────────────────── */}
         <section className="space-y-6">
            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#F6A100]/10 flex items-center justify-center text-[#F6A100]">
+              <div className="w-8 h-8 rounded-lg bg-[#F97316]/10 flex items-center justify-center text-[#F97316]">
                  <MapPin size={16} />
               </div>
-              <h3 className="text-xs font-black text-[#F6A100] uppercase tracking-[0.3em]">Contact & Location</h3>
+              <h3 className="text-xs font-black text-[#F97316] uppercase tracking-[0.3em]">Contact & Location</h3>
            </div>
            
            <div className="space-y-5">
@@ -175,8 +175,8 @@ const HotelFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =
                     onClick={() => toggleAmenity(a)}
                     className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all border ${
                       isSelected 
-                        ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-lg' 
-                        : 'bg-white text-gray-400 border-gray-100 hover:border-[#635BFF]'
+                        ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-lg' 
+                        : 'bg-white text-gray-400 border-gray-100 hover:border-[#0284C7]'
                     }`}
                   >
                     {a}
@@ -220,7 +220,7 @@ const HotelFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =
               <button
                 type="button"
                 onClick={addPhotoField}
-                className="flex items-center gap-2 px-6 py-3 border border-dashed border-gray-200 rounded-2xl text-xs font-black text-gray-400 uppercase tracking-widest hover:border-[#635BFF] hover:text-[#0A2540] transition-all"
+                className="flex items-center gap-2 px-6 py-3 border border-dashed border-gray-200 rounded-2xl text-xs font-black text-gray-400 uppercase tracking-widest hover:border-[#0284C7] hover:text-[#0F172A] transition-all"
               >
                 <Plus size={14} /> Add Image URL
               </button>
@@ -239,7 +239,7 @@ const HotelFormModal = ({ isOpen, onClose, onSubmit, initialData, isLoading }) =
            <button
              type="submit"
              disabled={isLoading}
-             className="flex-3 py-4 bg-[#0A2540] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#635BFF] transition-all shadow-xl shadow-[#0A2540]/20 flex items-center justify-center gap-3 px-12"
+             className="flex-3 py-4 bg-[#0F172A] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#0284C7] transition-all shadow-xl shadow-[#0F172A]/20 flex items-center justify-center gap-3 px-12"
            >
              {isLoading ? <RefreshCw size={16} className="animate-spin" /> : <Maximize2 size={16} />}
              <span>{isEditing ? 'Save Changes' : 'Register Hotel'}</span>

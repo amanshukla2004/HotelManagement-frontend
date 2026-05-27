@@ -32,7 +32,7 @@ const CustomCursor = () => {
     <>
       {/* Tiny Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-[#635BFF] rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#0284C7] rounded-full pointer-events-none z-[9999] mix-blend-difference"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
@@ -41,7 +41,7 @@ const CustomCursor = () => {
       />
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 border border-[#635BFF] rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 border border-[#0284C7] rounded-full pointer-events-none z-[9998]"
         animate={{
           x: mousePosition.x - (isHovering ? 24 : 16),
           y: mousePosition.y - (isHovering ? 24 : 16),
