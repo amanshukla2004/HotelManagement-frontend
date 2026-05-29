@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Use a relative URL to leverage the Vite proxy (defined in vite.config.js)
-// This is the permanent solution to CORS: the browser sees the request as same-origin.
-const BASE_URL = ''; 
+// In production, uses the deployed backend URL from .env (VITE_API_BASE_URL).
+// In local dev, falls back to '' to leverage the Vite proxy (same-origin, no CORS).
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
 
 
