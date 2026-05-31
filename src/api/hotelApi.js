@@ -17,7 +17,7 @@ export const adminHotelApi = {
   createHotel:    (data)               => axiosInstance.post('/api/v1/admin/hotels', data),
   updateHotel:    (hotelId, data)      => axiosInstance.put(`/api/v1/admin/hotels/${hotelId}`, data),
   deleteHotel:    (hotelId)            => axiosInstance.delete(`/api/v1/admin/hotels/${hotelId}`),
-  toggleActivate: (hotelId)            => axiosInstance.patch(`/api/v1/admin/hotels/${hotelId}/activate`),
+  toggleActivate: (hotelId)            => axiosInstance.patch(`/api/v1/admin/hotels/${hotelId}/activate`, null, { timeout: 240000 }),
 
   // Analytics — Section 7
   // GET /api/v1/admin/hotels/{hotelId}/bookings

@@ -62,6 +62,18 @@ const ManageHotelsPage = () => {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [togglingId, setTogglingId] = useState(null);
+  const [countdown, setCountdown] = useState(180);
+
+  useEffect(() => {
+    let timer;
+    if (togglingId) {
+      setCountdown(180);
+      timer = setInterval(() => {
+        setCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [togglingId]);
 
   const fetchHotels = useCallback(async () => {
     setIsLoading(true);
@@ -131,6 +143,32 @@ const ManageHotelsPage = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] relative pt-28">
       {/* ─── MODALS (Top Level) ────────────────────────────────────────── */}
+      <AnimatePresence>
+        {togglingId && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#0F172A]/80 backdrop-blur-sm p-4"
+          >
+            <div className="bg-white rounded-[2rem] p-8 max-w-md w-full shadow-2xl flex flex-col items-center text-center space-y-6">
+              <div className="relative flex items-center justify-center">
+                <div className="w-24 h-24 border-4 border-gray-100 border-t-[#0284C7] rounded-full animate-spin" />
+                <div className="absolute text-[#0F172A] font-black text-lg">
+                  {Math.floor(countdown / 60)}:{(countdown % 60) < 10 ? '0' : ''}{countdown % 60}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-black text-[#0F172A] tracking-tighter uppercase mb-2">Processing Update</h3>
+                <p className="text-sm font-medium text-gray-500 leading-relaxed">
+                  Please wait... Preparing hotel inventory for the next 365 days. This may take up to 3 minutes.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <HotelFormModal
         isOpen={slideOpen}
         onClose={() => { 
