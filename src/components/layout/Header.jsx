@@ -26,11 +26,11 @@ const Header = () => {
         
         {/* Logo */}
         <NavLink to="/" className="flex items-center space-x-2.5 group transition-transform hover:scale-[1.02]">
-          <div className="w-10 h-10 bg-gradient-to-br from-[#0F172A] to-[#0284C7] rounded-2xl flex items-center justify-center shadow-lg shadow-[#0284C7]/20 group-hover:rotate-6 transition-all duration-300">
+          {/* <div className="w-10 h-10 bg-gradient-to-br from-[#0F172A] to-[#0284C7] rounded-2xl flex items-center justify-center shadow-lg shadow-[#0284C7]/20 group-hover:rotate-6 transition-all duration-300">
             <Hotel className="text-white" size={22} />
-          </div>
+          </div> */}
           <span className="text-2xl font-display font-black tracking-tighter group-hover:text-[#0284C7] transition-colors text-white">
-            NOX
+            Roomly
           </span>
         </NavLink>
 

@@ -1,18 +1,20 @@
 # Dependencies
-node_modules
+node_modules/
+.pnpm-store/
 .pnp
 .pnp.js
 
 # Testing
-coverage
+coverage/
 
 # Production
-dist
-dist-ssr
+build/
+dist/
+dist-ssr/
 *.local
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -26,11 +28,12 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -39,16 +42,20 @@ lerna-debug.log*
 *.sw?
 .eslintcache
 
-# OS Files
+# OS files
 Thumbs.db
 desktop.ini
 
 # Vite
-.vite
+.vite/
 
-#
+# Project notes
 AGENT.md
 Design.md
 implementation_plan.md
-implemented.md
+Implemented.md
 MANUAL_TESTING_GUIDE.md
+FRONTEND_helper.md
+
+directives/
+directives/*

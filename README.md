@@ -1,117 +1,126 @@
-<div align="center">
-  <img src="public/branding/logo.png" alt="Nox Logo" width="120" />
-  <h1>Nox — Premium Hotel Management Platform</h1>
-  <p><i>Sophisticated. Seamless. State-of-the-Art.</i></p>
+# Roomly — Premium Hotel Booking & Management Platform
 
-  [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-  [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite)](https://vitejs.dev/)
-  [![Tailwind](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-black?logo=framer)](https://www.framer.com/motion/)
-  [![Redux](https://img.shields.io/badge/Redux-Toolkit-764ABC?logo=redux)](https://redux-toolkit.js.org/)
+Roomly is a polished hotel discovery and management experience for modern travelers and property managers. It combines a premium guest journey with a powerful admin workspace, all wrapped in a clean, high-conversion interface.
+
+<div align="center">
+  <p><strong>Luxury stays • Smart operations • Fast bookings</strong></p>
 </div>
 
----
+## ✨ What Roomly offers
 
-## 🌟 Overview
+- Fast hotel discovery with rich search and availability flows
+- Guided booking experience for guests from search to confirmation
+- Admin tools for hotels, rooms, inventory, and reporting
+- Secure authentication and profile-based guest management
 
-**Nox** is a next-generation Online Travel Agency (OTA) and Hotel Management platform. It bridges the gap between luxury traveler expectations and operational excellence for hotel managers. 
+## 🧭 Product overview
 
-Built with a **Deep-Blue Premium Aesthetic**, Nox utilizes advanced glassmorphism and motion design to provide an immersive discover-and-book experience.
+```mermaid
+flowchart LR
+    A([Guest lands on Roomly]):::start --> B[Search for hotels]:::main
+    B --> C[View hotel details]:::main
+    C --> D[Choose room & guests]:::main
+    D --> E[Secure payment]:::highlight
+    E --> F[Booking confirmed]:::success
 
----
+    classDef start fill:#0F172A,stroke:#0284C7,color:#F8FAFC,stroke-width:2px;
+    classDef main fill:#E0F2FE,stroke:#0284C7,color:#0F172A,stroke-width:1.5px;
+    classDef highlight fill:#BFDBFE,stroke:#2563EB,color:#0F172A,stroke-width:1.5px;
+    classDef success fill:#DCFCE7,stroke:#16A34A,color:#14532D,stroke-width:1.5px;
+```
 
-## ✨ Key Features
+## 🏗️ Architecture
 
-### 🛖 Traveler Experience
-- **Intelligent Search**: High-conversion search bar with location-aware inventory lookup and real-time availability.
-- **Sequential Booking Funnel**: A frictionless 4-step modal flow (`Select` → `Guests` → `Payment` → `Confirmation`).
-- **Interactive Mapping**: Leaflet-powered map integration showing real-time proximity and pricing for hotels.
-- **Dynamic Pricing**: Real-time room availability and price synchronization (₹) using a modular backend architecture.
-- **Guest Profile Management**: CRUD operations for "Saved Guests" to enable lightning-fast repeat bookings.
-- **Support Center**: Category-based contact system powered by EmailJS with real-time validation.
+```mermaid
+flowchart TB
+    subgraph Frontend[Frontend]
+        UI[React + Vite UI]:::ui
+        Routes[Routes & Pages]:::ui
+        State[Context + API layer]:::ui
+    end
 
-### 📊 Manager Suite (ERP)
-- **Analytics Dashboard**: Comprehensive KPI tracking for revenue, occupancy, and booking trends with large visual cards.
-- **Inventory Control**: Granular "Closed-to-Arrival" toggles and bulk price overrides for seasonal shifts.
-- **Property Management**: Complete CRUD suite for managing multi-property scales (Hotels & Room Types).
-- **Booking Ledger**: Detailed audit view for all reservations, guest details, and financial tracking.
+    subgraph Backend[Backend Services]
+        Auth[Auth API]:::api
+        Hotels[Hotel API]:::api
+        Bookings[Booking API]:::api
+    end
 
----
+    UI --> Routes
+    Routes --> State
+    State --> Auth
+    State --> Hotels
+    State --> Bookings
 
-## 🛠️ Technology Stack
+    classDef ui fill:#EFF6FF,stroke:#2563EB,color:#0F172A,stroke-width:1.5px;
+    classDef api fill:#F5F3FF,stroke:#7C3AED,color:#0F172A,stroke-width:1.5px;
+```
 
-| Layer | Technology |
-| :--- | :--- |
-| **Framework** | [React 19](https://react.dev/) (Functional Components, Hooks) |
-| **Build Tool** | [Vite 8](https://vitejs.dev/) |
-| **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) & Glassmorphism Design System |
-| **Animations** | [Framer Motion 12](https://www.framer.com/motion/) |
-| **State Management** | [Redux Toolkit](https://redux-toolkit.js.org/) & Context API |
-| **API Client** | [Axios](https://axios-http.com/) (with JWT Interceptors & Token Rotation) |
-| **Maps** | [Leaflet](https://leafletjs.com/) & React Leaflet |
-| **Forms** | [React Hook Form](https://react-hook-form.com/) |
-| **Icons** | [Lucide React](https://lucide.dev/) |
+## 🔄 Booking flow
 
----
+```mermaid
+sequenceDiagram
+    participant G as Guest
+    participant F as Roomly UI
+    participant B as Booking API
+    participant P as Payment Flow
 
-## 🚀 Getting Started
+    G->>F: Search hotels
+    F->>B: Fetch availability
+    B-->>F: Room options
+    G->>F: Select stay
+    F->>P: Create payment intent
+    P-->>F: Payment success
+    F->>B: Confirm reservation
+    B-->>G: Booking details
+
+    Note over G,F: Blue flow for guest discovery
+    Note over F,B: Violet flow for availability checks
+    Note over F,P: Sky flow for secure payments
+```
+
+## 🚀 Getting started
 
 ### Prerequisites
-- **Node.js**: v18 or higher
-- **Package Manager**: npm or yarn
-- **Backend**: Ensure the Nox Backend (Spring Boot) is running on port `9091`.
 
-### Installation
+- Node.js 18+
+- npm
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-repo/nox-frontend.git
-   cd nox-frontend
-   ```
+### Install
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Configure Environment**
-   Create a `.env` file in the root directory:
-   ```env
-   VITE_API_BASE_URL=http://localhost:9091
-   ```
+### Run locally
 
-4. **Launch Development Server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
----
+### Environment
 
-## 📂 Project Structure
+Create a .env file with:
+
+```env
+VITE_API_BASE_URL=http://localhost:9091
+```
+
+## 📁 Project structure
 
 ```text
 src/
-├── api/            # API services (authApi, hotelApi, bookingApi, etc.)
-├── assets/         # Global assets, styles, and brand elements
-├── components/     # Reusable UI Atoms & Molecules (Modals, Cards, Inputs)
-├── context/        # Global Auth and State providers
-├── layouts/        # Page wrappers (Premium Header, Sticky Footer)
-├── pages/          # View-level components (Search, Dashboard, Profile)
-├── redux/          # Redux slices and store configuration
-└── routes/         # Navigation, Private/Public route guards
+├── api/          # API services
+├── components/   # Reusable UI components
+├── context/      # Auth and shared state
+├── pages/        # Guest and admin pages
+├── routes/       # Route configuration
+└── utils/        # Helper functions
 ```
 
----
+## 🎨 Brand direction
 
-## 🎨 Design Philosophy
-
-Nox follows a **"Luxury Conversion"** design language:
-- **Glassmorphism**: Layered visual depth using backdrops and blurs for a premium feel.
-- **Dynamic Feedback**: Micro-interactions on every click/hover to increase user engagement.
-- **Accessibility**: Standardized typography and high-contrast color palettes for readability.
+Roomly emphasizes clarity, calm luxury, and high-trust interactions. The interface leans on soft gradients, glassmorphism, and fast feedback loops to keep the experience feeling premium without being overwhelming.
 
 ---
 
-<div align="center">
-  <p>Built with ❤️ for the future of Hospitality.</p>
-</div>
+Built with care for modern hospitality experiences.
